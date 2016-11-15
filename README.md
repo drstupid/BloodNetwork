@@ -1,12 +1,12 @@
 # BloodNetwork
 Repository for the Blood Network project.
 
-# How to Install / Upgrade global dependencies
+## How to Install / Upgrade global dependencies
 ```
 npm install -g gulp bower
 ```
 
-# How to Install local dependencies
+## How to Install local dependencies
 ```
 npm install
 ```
@@ -17,7 +17,7 @@ npm install
 bower install
 ```
 
-# How to run local development
+## How to run local development
 ```
 gulp serve
 ```
