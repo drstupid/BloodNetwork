@@ -1,7 +1,14 @@
 {
   "name": "bloodNetwork",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+      "express": "4.14.0",
+      "serve-static": "1.11.1",
+      "nstore": "0.5.2",
+      "express-form": "0.12.6",
+      "body-parser": "1.15.2",
+      "twilio": "2.11.0"
+  },
   "scripts": {
     "test": "gulp test"
   },
