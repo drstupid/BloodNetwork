@@ -7,6 +7,7 @@
 
   /** @ngInject */
   function MainController($timeout, toastr) {
+
     var vm = this;
 
     vm.awesomeThings = [];
@@ -14,6 +15,10 @@
     vm.creationDate = 1479204326682;
 
     activate();
+
+    $('.carousel').carousel({
+      interval: 2000
+    })
 
     function activate() {
       $timeout(function() {
