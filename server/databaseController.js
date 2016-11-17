@@ -33,8 +33,19 @@ module.exports = Pattern.extend({
         return false
     },
 
+    deleteUser: function (phoneNumber) {
+        var user = this.findUser(phoneNumber)
+        this.usersCollection().remove(user)
+        db.saveDatabase()
+    },
+
+    updateUser: function (user) {
+        this.usersCollection().update(user)
+        db.saveDatabase()
+    },
+
     findUser: function (phoneNumber) {
-        return this.usersCollection().find({phoneNumber: phoneNumber})
+        return this.usersCollection().findOne({phoneNumber: phoneNumber})
     },
 
     allUsers: function () {
