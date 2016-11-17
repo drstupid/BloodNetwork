@@ -24,7 +24,6 @@ module.exports = Pattern.extend({
 
     insertUser: function (phoneNumber, verificationCode, isVerified) {
         var existingUsers = this.usersCollection().find({phoneNumber: phoneNumber})
-        console.log(existingUsers)
         if (existingUsers.length == 0) {
             this.usersCollection().insert({phoneNumber: phoneNumber, verificationCode: verificationCode, isVerified: isVerified})
             db.saveDatabase()
