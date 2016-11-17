@@ -5,13 +5,6 @@
 </div>
 
 <div class="container">
-  <div class="jumbotron text-center">
-    <h1>Blood Network!</h1>
-    <p class="animated infinite" ng-class="main.classAnimation">
-      <button type="button" class="btn btn-lg btn-danger" ng-click="main.showToastr()">Doneaza</button>
-    </p>
-  </div>
-
   <div class="row">
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -24,15 +17,15 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="http://jurnalul.ro/thumbs/big/2013/09/10/p-medic-de-familie-18461829.jpg" alt="alt 1 ">
+          <img src="/assets/images/slider-01.jpg" alt="alt 1 ">
           <div class="carousel-caption">
             <div class="jumbotron jumbo" style=" background-color:transparent !important;text-align:left">
-<a class="btn btn-primary btn-lg" href="#" role="button">Doneaza</a></p>
+<a class="btn btn-primary btn-lg" href="#" role="button" style="color:#FFFFFF; background-color:#f15b5a;border-color:#f15b5a">Doneaza</a></p>
 </div>
           </div>
         </div>
         <div class="item">
-          <img src="http://jurnalul.ro/thumbs/big/2013/09/10/p-medic-de-familie-18461829.jpg" alt="alt 2">
+          <img src="/assets/images/slider-01.jpg" alt="alt 2">
           <div class="carousel-caption">
 etc
           </div>
@@ -50,5 +43,77 @@ etc
       </a>
     </div>
 
+  </div>
+  <div class="row">
+  <div class="jumbotron text-left">
+    <p>
+      UNDE?
+    </p>
+    <table class="table" style=" width: 100%;">
+  <tr>
+    <td style="width:50%">
+      <div id="map" style=" height: 400px; width: 100%;"></div>
+          <script>
+            function initMap() {
+              var uluru = {lat: -25.363, lng: 131.044};
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+              });
+              var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+              });
+            }
+          </script>
+          <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdiTvfa3n-rAXyyuuDgA0310qcIjUPkUM&callback=initMap">
+          </script>
+    </td>
+    <td>
+
+        <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li ng-repeat="user in users">
+                              {{ locatiom.coordinates }}
+                          </li>
+                </ul>
+              </div>
+
+      NUME CENTRU<br>
+      Centrul de Transfuzie Sanguina<br>
+      ADRESA<br>
+      Bl. Liviu Rebreanu, nr 00<br>
+
+      <table><th>ORAR</th>
+        <tr>
+          <td>Luni - Vineri
+          </td>
+          <td>
+            08:00 - 20:00
+          </td>
+      </tr>
+      <tr>
+        <td>Sambata
+        </td>
+        <td>
+          08:00 - 12:00
+        </td>
+    </tr>
+    <tr>
+      <td>Duminica
+      </td>
+      <td>
+        Inchis
+      </td>
+  </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+    </div>
   </div>
 </div>
