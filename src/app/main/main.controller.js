@@ -20,6 +20,10 @@
       interval: 2000
     })
 
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus()
+    })
+
     function activate() {
       $timeout(function() {
         vm.classAnimation = 'rubberBand';
