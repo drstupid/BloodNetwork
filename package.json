@@ -10,7 +10,8 @@
     "twilio": "2.11.0"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "start": "node server/app.js"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
