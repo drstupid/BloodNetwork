@@ -7,7 +7,8 @@
  var registrationController = require("./registrationController.js")
  var db = require("./databaseController.js")
  registrationController.initialize(db)
-
+ 
+ app.use(express.static("src"))
  app.listen(process.env.PORT || 8080, function(){
    console.log("Server started...")
  })
