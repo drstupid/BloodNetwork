@@ -169,11 +169,7 @@ Sângele are o durata de viaţă limitată:
         <h4 class="modal-title" id="myModalLabel">DONEAZA</h4>
       </div>
       <div class="modal-body">
-        <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="number" id="number" name"number" aria-describedby="basic-addon1">
-</div>
-<h1>Regulile pentru donatori</h1>
+  <h1>Regulile pentru donatori</h1>
       <ul>
         <li>Pot dona cei pest 18 ani si sub 60 de ani dar daca ai peste 50 de ani trebuie neaprat sa fi in conditie fizica "perfecta" / foarte sanatos - daca nu cica sunt sanse sa i se faca rau donatorului si nu accepta
         </li>
@@ -211,35 +207,59 @@ Sângele are o durata de viaţă limitată:
            * daca ai copil sub 1 an
          </li>
        </ul>
-
+       <div class="alert alert-info" role="alert">         Iti trimitem un SMS cand exista o nevoie urgenta de sange!</div>
+       <div class="input-group">
+ <span class="input-group-addon" id="basic-addon1">Telefon</span>
+ <input type="text" class="form-control" placeholder="+40 ..."  data-bind="value:number" type="number" id="phone" aria-describedby="basic-addon1">
+ </div>
       </div>
       <div class="modal-footer">
         <label class="checkbox-inline">
-  <input type="checkbox" id="myModalCheck" value="option1"> Sunt eligibil cu conditiile de mai sus
+  <input type="checkbox" id="eligibleCheck" value="option1"> Sunt eligibil cu conditiile de mai sus
 </label>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
-        <button type="button" class="btn btn-primary" id="myModalSend" disabled >Trimite</button>
+        <button type="button" class="btn btn-primary" id="mySend" disabled >Trimite</button>
       </div>
     </div>
   </div>
 </form>
 </div>
 
-
 <!-- Modal -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">DONEAZA - Confirma SMS</h4>
+        <h4 class="modal-title" id="myModalLabel2">DONEAZA - Confirma SMS</h4>
       </div>
       <div class="modal-body">
+
+        <div class="alert alert-info" role="alert">Introdu codul de confirmare primit pe SMS primit pe numarul<p id="sentNumber"></p></div>
+        <div class="input-group">
+        <span class="input-group-addon" id="basic-addon2">SMS</span>
+        <input type="text" class="form-control" placeholder="xxxx"  data-bind="value:number" type="number" id="smsCode" aria-describedby="basic-addon2">
 
       </div>
       <div class="modal-footer">
         <label class="checkbox-inline">
-        <button type="button" class="btn btn-primary" id="myModalSend" disabled >Confirma</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
+        <button type="button" class="btn btn-primary" id="mySendSMS" disabled >Confirma</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel3">DONEAZA -Mesaj confirmare</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-info" role="alert">Inregistrarea a fost realizata cu success</div>
+      <div class="modal-footer">
+        <label class="checkbox-inline">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
       </div>
     </div>
   </div>
