@@ -8,7 +8,7 @@
  var db = require("./databaseController.js")
  registrationController.initialize(db)
 
- app.listen(8080, function(){
+ app.listen(process.env.PORT || 8080, function(){
    console.log("Server started...")
  })
 
@@ -52,4 +52,8 @@ app.post("/phoneValidationAction", urlencodedParser, function(request, response)
     console.log("validation code not valid")
     response.status(500).send({erorr: "validation code not valid"})
   }
+})
+
+app.get("/centers", function(request, response) {
+    response.json(db.allCenters())
 })
