@@ -53,3 +53,7 @@ app.post("/phoneValidationAction", urlencodedParser, function(request, response)
     response.status(500).send({erorr: "validation code not valid"})
   }
 })
+
+app.get("/centers", function(request, response) {
+    response.json(db.allCenters())
+})
