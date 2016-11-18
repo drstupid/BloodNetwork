@@ -27,8 +27,8 @@ app.post("/registrationAction", urlencodedParser, function(request, response) {
     if(!err) {
       response.status(200).json({"phoneNumber": phoneNumber})
     } else {
-      console.log("phone number registration failed")
-      response.status(500).json({error: "phone number registration failed"})
+      console.log("phone number registration failed '" + message + "'");
+      response.status(500).json({error: message})
     }
   })
 })
@@ -42,11 +42,11 @@ app.post("/phoneValidationAction", urlencodedParser, function(request, response)
   console.log("post from phoneValidationAction: " + validationCode)
   var isValid = registrationController.validatePhoneNumber(phoneNumber, validationCode)
   if (isValid) {
-    console.log("validation code is valid")
+    console.log("validation code IS valid")
     response.status(200).json({"phoneNumber": phoneNumber, "validationCode" : validationCode})
   } else {
-    console.log("validation code not valid")
-    response.status(500).send({erorr: "Codul de validare nu este valid."})
+    console.log("validation code NOT valid")
+    response.status(500).send({erorr: "Codul introdus nu este valid."})
   }
 })
 

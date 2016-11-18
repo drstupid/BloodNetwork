@@ -17,6 +17,21 @@ function getValidationCode() {
     return text;
 }
 
+function sendMessage(phoneNumber, validationCode, completion) {
+  client.messages.create({
+      to: phoneNumber,
+      from: "+18584616763",
+      body: "Cod de validare: " + validationCode,
+  }, function(err, response) {
+      completion(err, response)
+      if (!err) {
+          console.log("Message sent: " + JSON.stringify(response))
+      } else {
+          console.log(JSON.stringify(err))
+      }
+  });
+}
+
 var db
 
 module.exports = Pattern.extend({
@@ -29,21 +44,27 @@ module.exports = Pattern.extend({
         var validationCode = getValidationCode()
 
         if (db.insertUser(phoneNumber, validationCode, false)) {
-            client.messages.create({
-                to: phoneNumber,
-                from: "+18584616763",
-                body: "Cod de validare: " + validationCode,
-            }, function(err, message) {
-                completion(err, message)
-                if (!err) {
-                    console.log("Message sent: " + message)
-                } else {
-                    console.log(message)
-                }
-            });
+          sendMessage(phoneNumber, validationCode, function (err, response) {
+            if (err) {
+              completion(err, "Va rugam sa verificati numarul de telefon introdus.")
+            } else {
+              completion(null, null)
+            }
+          })
         } else {
-            console.log("User already in db")
-            completion("", "Numarul de telefon introdus exista deja")
+            var user = db.findUser(phoneNumber)
+            if (user.isVerified) {
+              console.log("User with phone number: " + phoneNumber + " already registered")
+              completion("error", "Numarul de telefon " + phoneNumber + " a fost deja inregistrat si validat.")
+            } else { // resend validation code
+              sendMessage(phoneNumber, validationCode, function (err, response) {
+                if (err) {
+                  completion(err, "Error :) Va rugam sa verificati numarul de telefon introdus.")
+                } else {
+                  completion(null, null)
+                }
+              })
+            }
         }
     },
 
