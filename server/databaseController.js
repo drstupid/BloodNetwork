@@ -8,9 +8,10 @@ db.loadDatabase({}, function () {
 
 // Define database collections
 var users
+var centers
 
 module.exports = Pattern.extend({
-
+    // Collections getters
     usersCollection: function () {
         if (users == null) {
             users = db.getCollection('users');
@@ -22,6 +23,34 @@ module.exports = Pattern.extend({
         return users
     },
 
+    centersCollection: function () {
+        if (centers == null) {
+            centers = db.getCollection('centers')
+            if (centers == null) {
+                centers = db.addCollection('centers')
+
+                var centersJSON = require("./centers.json")
+                for (var city in centersJSON) {
+                    centersJSON[city].city = city
+                    centers.insert(centersJSON[city])
+                }
+                db.saveDatabase()
+            }
+        }
+
+        return centers
+    },
+
+    // Centers
+    allCenters: function () {
+        return this.centersCollection().find({})
+    },
+
+    findCenter: function (city) {
+        return this.centersCollection().find({city: city})
+    },
+
+    // Users
     insertUser: function (phoneNumber, verificationCode, isVerified) {
         var existingUsers = this.usersCollection().find({phoneNumber: phoneNumber})
         if (existingUsers.length == 0) {
