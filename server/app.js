@@ -7,7 +7,7 @@
  var registrationController = require("./registrationController.js")
  var db = require("./databaseController.js")
  registrationController.initialize(db)
- 
+
  app.use(express.static("src"))
  app.listen(process.env.PORT || 8080, function(){
    console.log("Server started...")
@@ -38,7 +38,7 @@ app.post("/phoneValidationAction", urlencodedParser, function(request, response)
   if (!request.body) return response.sendStatus(400)
 
   var validationCode = request.body.validationCode
-  var phoneNumber = request.bod.phoneNumber
+  var phoneNumber = request.body.phoneNumber
   console.log("post from phoneValidationAction: " + validationCode)
   var isValid = registrationController.validatePhoneNumber(phoneNumber, validationCode)
   if (isValid) {
