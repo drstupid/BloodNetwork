@@ -16,11 +16,6 @@
    response.sendFile("index.html", {root: path.join(__dirname, "../src")})
  })
 
-// Dispaly registration form
- app.get("/registrationForm", function(request, response) {
-   response.sendFile("registrationForm.html", {root: path.join(__dirname, "../src")})
- })
-
 // Process registration and display phone nr validation
 app.post("/registrationAction", urlencodedParser, function(request, response) {
   if (!request.body) return response.sendStatus(400)
@@ -29,11 +24,10 @@ app.post("/registrationAction", urlencodedParser, function(request, response) {
   console.log("post from registrationAction: " + phoneNumber)
   registrationController.registerPhoneNumber(phoneNumber, function(err, message) {
     if(!err) {
-      response.sendFile("phoneNumberValidation.html", {root: path.join(__dirname, "../src")})
+      response.send(200).json({"phoneNumber": phoneNumber})
     } else {
-      //TODO: replace
       console.log("phone number registration failed")
-      response.status(500).send({erorr: "phone number registration failed"})
+      response.status(500).json({error: "phone number registration failed"})
     }
   })
 })
@@ -42,15 +36,16 @@ app.post("/registrationAction", urlencodedParser, function(request, response) {
 app.post("/phoneValidationAction", urlencodedParser, function(request, response) {
   if (!request.body) return response.sendStatus(400)
 
-  var validationCode = request.body.validationCode;
+  var validationCode = request.body.validationCode
+  var phoneNumber = request.bod.phoneNumber
   console.log("post from phoneValidationAction: " + validationCode)
-  var isValid = registrationController.validatePhoneNumber("+40742128415", validationCode)
+  var isValid = registrationController.validatePhoneNumber(phoneNumber, validationCode)
   if (isValid) {
     console.log("validation code is valid")
-    response.redirect("/")
+    response.send(200).json({"phoneNumber": phoneNumber, "validationCode" : validationCode})
   } else {
     console.log("validation code not valid")
-    response.status(500).send({erorr: "validation code not valid"})
+    response.status(500).send({erorr: "Codul de validare nu este valid."})
   }
 })
 
