@@ -8,7 +8,7 @@
  var db = require("./databaseController.js")
  registrationController.initialize(db)
 
- app.listen(process.env.port || 8080, function(){
+ app.listen(process.env.PORT || 8080, function(){
    console.log("Server started...")
  })
 
