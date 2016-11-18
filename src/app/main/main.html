@@ -114,7 +114,7 @@ Sângele are o durata de viaţă limitată:
 
         <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" id="location-centers">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Another action</a></li>
                   <li ng-repeat="user in users">
@@ -161,6 +161,7 @@ Sângele are o durata de viaţă limitată:
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <form id="contact-form" method="post" action="" role="form">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -168,11 +169,77 @@ Sângele are o durata de viaţă limitată:
         <h4 class="modal-title" id="myModalLabel">DONEAZA</h4>
       </div>
       <div class="modal-body">
+        <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="number" id="number" name"number" aria-describedby="basic-addon1">
+</div>
+<h1>Regulile pentru donatori</h1>
+      <ul>
+        <li>Pot dona cei pest 18 ani si sub 60 de ani dar daca ai peste 50 de ani trebuie neaprat sa fi in conditie fizica "perfecta" / foarte sanatos - daca nu cica sunt sanse sa i se faca rau donatorului si nu accepta
+        </li>
+        <li>
+        Daca ai peste 55 kg  (femei) si 65 kg (barbati) - dar totusi anumite reguli, daca esti foarte slab si inalt nu poti (daca greutatea ta se apropie de cea limita)
+      </li>
+      </ul>
+        <h1>Sanatate. Trebuie sa nu ai</h1>
+        <ul>
+         <li>Boli de plamani (cancer), probleme tiroidiene sau cerebrale (atac cerebral, avc)</li>
+         <li>HIV, Sifilis, TBC, hepatita b sau c (a se accepta daca a fost in copilarie, mai mult de 10 ani de atunci)  - oricum la prima donare se verifica, asta daca nu stii</li>
+        <li>sifilis</li>
+        <li>malarie</li>
+        <li>epilepsie si alte boli neurologice</li>
+        <li>boli psihice</li>
+        <li>bruceloză</li>
+        <li>ulcer</li>
+        <li>diabet zaharat</li>
+        <li>boli de inimă</li>
+        <li>boli de piele: psoriazis, vitiligo</li>
+        <li>miopie forte peste (-) 6 dioptrii</li>
+        <li>cancer</li>
+<li>sa nu ai anemie</li>
+         <li>sa nu fi cu gripe grave sau bolnav de alte (infectii etc) cele la momentul respectiv</li>
+         <li>sa nu ai hipertensiune</li>
+         <li>sa nu fii sub tratament pentru diferite afectiuni: hipertensiune,boli de inima,boli renale,boli psihice,boli hepatice,boli endocrine</li>
+<li>Sa nu ai piercing-uri sau tatuaje facute in ultimele 3 luni</li>
+<li>        - Sa nu fi avut interventii chirurgicale
+         * mici in ultimele 6 luni (gen: interventie stomatologica)
+         * mari in ultimul an (gen: apendicita)
+</li>
+<li>
+        -  Pt femei/fete:
+           * sa nu fie la ciclu
+           * daca ai copil sub 1 an
+         </li>
+       </ul>
 
       </div>
       <div class="modal-footer">
+        <label class="checkbox-inline">
+  <input type="checkbox" id="myModalCheck" value="option1"> Sunt eligibil cu conditiile de mai sus
+</label>
         <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
-        <button type="button" class="btn btn-primary">Trimite</button>
+        <button type="button" class="btn btn-primary" id="myModalSend" disabled >Trimite</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">DONEAZA - Confirma SMS</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <label class="checkbox-inline">
+        <button type="button" class="btn btn-primary" id="myModalSend" disabled >Confirma</button>
       </div>
     </div>
   </div>
