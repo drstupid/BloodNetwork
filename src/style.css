@@ -12,6 +12,14 @@ h1 {
   line-height: 1.25em;
 }
 
+h2,h3,h4,h5,h6 {
+  font-weight: 200;
+}
+
+p.section-title {
+  font-weight:700;
+}
+
 a:hover, a:focus {
   color: greenyellow;
 }
@@ -95,4 +103,35 @@ color:#888888;
 }
 .blood-footer-contact p.second {
   float: right;
+}
+
+.row div {
+  font-weight: 200;
+}
+
+.first {
+  font-weight: 200;
+}
+
+.second a {
+  font-weight:200;
+  color: rgb(127, 130, 138);
+}
+
+#centerInfo p, li {
+  font-size: 14px;
+  font-weight:200;
+}
+
+
+.btn-font {
+  font-weight:200;
+}
+
+li span {
+  font-weight: 700;
+}
+
+li small {
+  font-weight:200;
 }
