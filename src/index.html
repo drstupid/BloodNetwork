@@ -120,76 +120,65 @@
          </div>
       </div>
      </div>
-        </div>
-        </div>
-      </div>
-    <div class="row">
-      <div class="jumbotron text-left">
-        <p>
-          UNDE?
-        </p>
-        <table class="table" style=" width: 100%;">
+  </div>
+ </div>
+</div>
+
+<div class="row">
+  <div class="jumbotron text-left">
+    <p>
+      UNDE?
+    </p>
+
+    <table class="table" style=" width: 100%;">
       <tr>
         <td style="width:50%">
           <div id="map" style=" height: 400px; width: 100%;"></div>
-              <script>
-                function initMap() {
-                  var uluru = {lat: -25.363, lng: 131.044};
-                  var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 4,
-                    center: uluru
-                  });
-                  var marker = new google.maps.Marker({
-                    position: uluru,
-                    map: map
-                  });
-                }
-              </script>
-              <script async defer
-              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdiTvfa3n-rAXyyuuDgA0310qcIjUPkUM&callback=initMap">
-              </script>
         </td>
         <td>
 
             <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
-                    <ul class="dropdown-menu" id="location-centers">
-
-                    </ul>
-                  </div>
-
-          NUME CENTRU<br>
-          Centrul de Transfuzie Sanguina<br>
-          ADRESA<br>
-          Bl. Liviu Rebreanu, nr 00<br>
-
-          <table><th>ORAR</th>
-            <tr>
-              <td>Luni - Vineri
-              </td>
-              <td>
-                08:00 - 20:00
-              </td>
-          </tr>
-          <tr>
-            <td>Sambata
-            </td>
-            <td>
-              08:00 - 12:00
-            </td>
-        </tr>
-        <tr>
-          <td>Duminica
-          </td>
-          <td>
-            Inchis
-          </td>
-      </tr>
-          </table>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
+                <ul class="dropdown-menu" id="location-centers">
+                </ul>
+            </div>
+            <div class="row">&nbsp;</div> <!-- spacer -->
+            <div id="centerInfo" class="row-fluid">
+                <p><strong>NUME CENTRU</strong></p>
+                <p class="js-center-name">-</p>
+                <p><strong>ADRESA</strong></p>
+                <p class="js-center-address">-</p>
+                <p><strong>ORAR</strong></p>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-6">Luni-Vineri</div>
+                        <div class="col-xs-6">08:00 - 20:00</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Sambata</div>
+                        <div class="col-xs-6">08:00 - 12:00</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Duminica</div>
+                        <div class="col-xs-6">Inchis</div>
+                    </div>
+                </div>
+            </div>
         </td>
       </tr>
     </table>
-        </div>
+  </div>
+
+</div>
+
+<!-- Modal 1-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <form id="contact-form" method="post" action="" role="form">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">DONEAZA</h4>
       </div>
 
     </div>
@@ -366,5 +355,14 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </body>
 </html>
+=======
+  </div>
+</div>
+</div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdiTvfa3n-rAXyyuuDgA0310qcIjUPkUM&callback=initGMap"></script>
+
+>>>>>>> cristian
