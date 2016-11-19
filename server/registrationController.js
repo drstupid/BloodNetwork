@@ -75,7 +75,7 @@ module.exports = Pattern.extend({
     validatePhoneNumber: function (phoneNumber, validationCode) {
         var user = db.findUser(phoneNumber)
 
-        if (user.verificationCode == validationCode) {
+        if (user.validationCode == validationCode) {
             user.isVerified = true
             db.updateUser(user)
             return true

@@ -6,9 +6,15 @@ db.loadDatabase({}, function () {
     console.log("Database prepared");
 });
 
+function currentDateInMilliseconds() {
+  var d = new Date();
+  return d.getTime();
+}
+
 // Define database collections
 var users
 var centers
+var news
 
 module.exports = Pattern.extend({
     // Collections getters
@@ -39,6 +45,17 @@ module.exports = Pattern.extend({
         }
 
         return centers
+    },
+
+    newsCollection: function () {
+      if (news == null) {
+        news = db.getCollection("news")
+        if (news == null) {
+          news = db.addCollection("news")
+        }
+      }
+
+      return news
     },
 
     // Centers
@@ -80,6 +97,20 @@ module.exports = Pattern.extend({
 
     allUsers: function () {
         return this.usersCollection().find({})
+    },
+
+    // News
+    insertNews: function (title, body) {
+      this.newsCollection().insert({title: title, date: currentDateInMilliseconds(), body: body})
+      db.saveDatabase()
+    },
+
+    allNews: function () {
+      return this.newsCollection().find({}).sort(function(obj1, obj2) {
+        if (obj1.date === obj2.date) return 0
+        if (obj1.date > obj2.date) return -1
+        if (obj1.date < obj2.date) return 1
+      })
     }
 
 });
