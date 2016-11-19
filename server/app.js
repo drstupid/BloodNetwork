@@ -7,9 +7,10 @@
  var registrationController = require("./registrationController.js")
  var db = require("./databaseController.js")
  registrationController.initialize(db)
- 
+
  var passport = require('passport')
  var LocalStrategy = require('passport-local').Strategy
+
  app.use(express.static("src"))
  var session = require('express-session')
  app.use(session({ secret: 'keyboard cat' }))
@@ -69,10 +70,10 @@ app.post("/registrationAction", urlencodedParser, function(request, response) {
   console.log("post from registrationAction: " + phoneNumber)
   registrationController.registerPhoneNumber(phoneNumber, function(err, message) {
     if(!err) {
-      response.send(200).json({"phoneNumber": phoneNumber})
+      response.status(200).json({"phoneNumber": phoneNumber})
     } else {
-      console.log("phone number registration failed")
-      response.status(500).json({error: "phone number registration failed"})
+      console.log("phone number registration failed '" + message + "'");
+      response.status(500).json({error: message})
     }
   })
 })
@@ -82,15 +83,15 @@ app.post("/phoneValidationAction", urlencodedParser, function(request, response)
   if (!request.body) return response.sendStatus(400)
 
   var validationCode = request.body.validationCode
-  var phoneNumber = request.bod.phoneNumber
+  var phoneNumber = request.body.phoneNumber
   console.log("post from phoneValidationAction: " + validationCode)
   var isValid = registrationController.validatePhoneNumber(phoneNumber, validationCode)
   if (isValid) {
-    console.log("validation code is valid")
-    response.send(200).json({"phoneNumber": phoneNumber, "validationCode" : validationCode})
+    console.log("validation code IS valid")
+    response.status(200).json({"phoneNumber": phoneNumber, "validationCode" : validationCode})
   } else {
-    console.log("validation code not valid")
-    response.status(500).send({erorr: "Codul de validare nu este valid."})
+    console.log("validation code NOT valid")
+    response.status(500).send({erorr: "Codul introdus nu este valid."})
   }
 })
 
