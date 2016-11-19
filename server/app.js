@@ -8,7 +8,51 @@
  var db = require("./databaseController.js")
  registrationController.initialize(db)
  
+ var passport = require('passport')
+ var LocalStrategy = require('passport-local').Strategy
  app.use(express.static("src"))
+ var session = require('express-session')
+ app.use(session({ secret: 'keyboard cat' }))
+ app.use(passport.initialize())
+ app.use(passport.session())
+
+ var bCrypt = require("bcrypt-nodejs")
+ var createHash = function(password){
+     return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+ }
+ var isValidPassword = function(admin, password){
+     return bCrypt.compareSync(password, admin.password);
+}
+
+ passport.use('local', new LocalStrategy(
+  function(username, password, done) {
+    var admin = db.findAdmin(username)
+    console.log(JSON.stringify(admin))
+    if (!admin || !isValidPassword(admin, password)) {
+        return done(null, false, { message: 'Incorrect username or password.' });
+    }
+
+    return done(null, admin);
+  }
+));
+
+passport.serializeUser(function(user, done) {
+    console.log("serializing User: " + user)
+    done(null, user.username);
+});
+
+passport.deserializeUser(function(username, done) {
+    console.log("deserializing user: "+ username)
+    var admin = db.findAdmin(username)
+    if (admin) {
+        console.log("deserialized")
+        done(null, admin)
+    } else {
+        console.log("deserialized fail")
+        done (null, false)
+    }
+});
+
  app.listen(process.env.PORT || 8080, function(){
    console.log("Server started...")
  })
@@ -53,3 +97,13 @@ app.post("/phoneValidationAction", urlencodedParser, function(request, response)
 app.get("/centers", function(request, response) {
     response.json(db.allCenters())
 })
+
+/// Pass this MIDDLEWARE to the POST that handles login
+var authenticate = passport.authenticate('local', { successRedirect: '/logged', failureRedirect: '/muie' })
+
+/// Pass this MIDDLEWARE to any page that needs to be protected by authentication
+var isAuthenticated = function (req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+  res.redirect('/muie');
+}
