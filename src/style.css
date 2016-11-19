@@ -1,0 +1,98 @@
+.acme-navbar-text{
+  color: white;
+}
+
+a {
+  color: black;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+  line-height: 1.25em;
+}
+
+a:hover, a:focus {
+  color: greenyellow;
+}
+.bn-header-empty{
+  height: 46px;
+  background-color: #60646d;
+  color:#a4a8b1;
+  text-align: left;
+  padding-top: 10px;
+}
+.bn-navbar-brand{
+font-weight: bold;
+}
+ .bn-navbar{
+    background-color: #FFFFFF;
+ }
+
+
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+$navbar-inverse-link-color: #5AADBB;
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+.jumbo {
+    /* IE8 and below */
+    background: rgb(200, 54, 54);
+    /* all other browsers */
+    background: rgba(200, 54, 54, 0.5);
+}
+h4{
+color:#888888;
+}
+
+.blood-footer {
+  background-color: #3a3c41;
+  color: white;
+}
+.blood-news {
+  padding: 70px 0;
+}
+.blood-footer p {
+  font-size: 12px;
+  color: #7f828a;
+}
+.blood-footer-contact {
+  padding: 30px 0;
+  border-top: 1px solid #4a4c52;
+}
+.blood-footer-contact p.first {
+  float: left;
+}
+.blood-footer-contact p.second {
+  float: right;
+}

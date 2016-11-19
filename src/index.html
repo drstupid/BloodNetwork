@@ -1,49 +1,370 @@
-<!doctype html>
-<html ng-app="bloodNetwork">
+<!DOCTYPE html>
+<html>
   <head>
     <meta charset="utf-8">
-
     <title>Blood Network</title>
-
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:css({.tmp/serve,src}) styles/app.css -->
-    <!-- inject:css -->
-    <!-- css files will be automatically insert here -->
-    <!-- endinject -->
-    <!-- endbuild -->
-    <base href="/">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <script type="text/javascript" src="main.controller.js"></script>
   </head>
   <body>
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <div class="container">
+      <nav class=" navbar-static-top">
+        <div class="container bn-header-empty">
+          Bun venit pe Blood Network
+        </div>
+      </nav>
+      <nav class="navbar navbar-default navbar-static-top bn-navbar">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-    <div ui-view></div>
+            <a class="navbar-brand bn-navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
+              BLOOD NETWORK
+            </a>
+          </div>
 
-    <!-- build:js(src) scripts/vendor.js -->
-    <!-- bower:js -->
-    <!-- run `gulp inject` to automatically populate bower script dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a ng-href="#">Home</a></li>
+              <li><a ng-href="#">About</a></li>
+              <li><a ng-href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
-    <!-- inject:js -->
-    <!-- js files will be automatically insert here -->
-    <!-- endinject -->
+    </div>
 
-    <!-- inject:partials -->
-    <!-- angular templates will be automatically converted in js and inserted here -->
-    <!-- endinject -->
-    <!-- endbuild -->
+    <div class="container">
+      <div class="row">
 
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="/assets/images/slider-01.jpg" alt="alt 1 ">
+              <div class="carousel-caption">
+                <div class="jumbotron jumbo" style=" background-color:transparent !important;text-align:left">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary btn-lg"
+                  data-toggle="modal" data-target="#myModal"> Doneaza </button></p>
+                </div> </div> </div> </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color:#f15b5a"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="color:#f15b5a"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="row">
+      <div class="jumbotron text-left" style="background-color:#FFFFFF">
+        <div class="row">
+     <div class="col-md-4">
+       <p class="lead">România se află pe ultimele locuri în Europa la capitolul donării de sânge.</p>
+       <h4> Este ironic că un popor atât de solidar nu trece de un procent atât de mic precum cel pe care îl înregistrăm, în medie, pe an: doar 1,7% din populaţia adultă donează sânge. În prezent, doar 1-2% dintre români donează sânge. Sistemul medical din România trăieşte într-o continuă nevoie de sânge.</h4>
+     </div>
+     <div class="col-md-8">
+
+      <div class="row">
+         <div class="col-md-1">
+             <img src="/assets/images/cross.png" alt="alt 2">
+         </div>
+         <div class="col-md-5">
+    <p>DE CE?</p>
+    <h4>
+    Sângele are o durata de viaţă limitată:
+    <br>- Trombocitele trebuie folosite în maxim 5 zile de la donare;
+    <br>- Celulele roşii (eritrocite) pot fi păstrate la rece pentru maxim 42 de zile sau îngheţate până la maxim 10 ani(dar, datorită costurilor pe care le implică, doar o mică parte din rezerva de sânge poate fi îngheţată);
+    <br>- Plasma este în general îngheţată şi se foloseşte pe parcursul unui an
+    </h4>
+         </div>
+         <div class="col-md-1">
+           <img src="/assets/images/case.png" alt="alt 2">
+         </div>
+         <div class="col-md-5">
+           <p>SIGURANTA</p>
+           <h4>
+             Donarea de sange este sigura si usoara:
+             <br>
+             - Vi se vor pune cateva intrebari legate de starea de sanatate si vi se va face un mic examen medical – temperatura, puls, tensiune.
+             <br>
+             - Nu se poate lua SIDA sau alte boli infectioase in timpul donarii.
+             <br>
+             - Se utilizeaza un ac steril si de unica folosinta pentru fiecare donare.
+             <br>
+             - Rezultatele testelor raman confidentiale.
+           </h4>
+         </div>
+      </div>
+     </div>
+        </div>
+        </div>
+      </div>
+    <div class="row">
+      <div class="jumbotron text-left">
+        <p>
+          UNDE?
+        </p>
+        <table class="table" style=" width: 100%;">
+      <tr>
+        <td style="width:50%">
+          <div id="map" style=" height: 400px; width: 100%;"></div>
+              <script>
+                function initMap() {
+                  var uluru = {lat: -25.363, lng: 131.044};
+                  var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: uluru
+                  });
+                  var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                  });
+                }
+              </script>
+              <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdiTvfa3n-rAXyyuuDgA0310qcIjUPkUM&callback=initMap">
+              </script>
+        </td>
+        <td>
+
+            <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
+                    <ul class="dropdown-menu" id="location-centers">
+
+                    </ul>
+                  </div>
+
+          NUME CENTRU<br>
+          Centrul de Transfuzie Sanguina<br>
+          ADRESA<br>
+          Bl. Liviu Rebreanu, nr 00<br>
+
+          <table><th>ORAR</th>
+            <tr>
+              <td>Luni - Vineri
+              </td>
+              <td>
+                08:00 - 20:00
+              </td>
+          </tr>
+          <tr>
+            <td>Sambata
+            </td>
+            <td>
+              08:00 - 12:00
+            </td>
+        </tr>
+        <tr>
+          <td>Duminica
+          </td>
+          <td>
+            Inchis
+          </td>
+      </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal 1-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <form id="contact-form" method="post" action="" role="form">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">DONEAZA</h4>
+            </div>
+
+            <div class="modal-body">
+              <h1>Regulile pentru donatori</h1>
+              <ul>
+                <li>
+                  Pot dona cei pest 18 ani si sub 60 de ani dar daca ai peste 50 de ani trebuie neaprat sa fi in conditie fizica "perfecta" / foarte sanatos - daca nu cica sunt sanse sa i se faca rau donatorului si nu accepta
+                </li>
+                <li>
+                  Daca ai peste 55 kg  (femei) si 65 kg (barbati) - dar totusi anumite reguli, daca esti foarte slab si inalt nu poti (daca greutatea ta se apropie de cea limita)
+                </li>
+              </ul>
+
+              <h1>Sanatate. Trebuie sa nu ai</h1>
+              <ul>
+               <li>Boli de plamani (cancer), probleme tiroidiene sau cerebrale (atac cerebral, avc)</li>
+               <li>HIV, Sifilis, TBC, hepatita b sau c (a se accepta daca a fost in copilarie, mai mult de 10 ani de atunci)  - oricum la prima donare se verifica, asta daca nu stii</li>
+              <li>sifilis</li>
+              <li>malarie</li>
+              <li>epilepsie si alte boli neurologice</li>
+              <li>boli psihice</li>
+              <li>bruceloză</li>
+              <li>ulcer</li>
+              <li>diabet zaharat</li>
+              <li>boli de inimă</li>
+              <li>boli de piele: psoriazis, vitiligo</li>
+              <li>miopie forte peste (-) 6 dioptrii</li>
+              <li>cancer</li>
+      <li>sa nu ai anemie</li>
+               <li>sa nu fi cu gripe grave sau bolnav de alte (infectii etc) cele la momentul respectiv</li>
+               <li>sa nu ai hipertensiune</li>
+               <li>sa nu fii sub tratament pentru diferite afectiuni: hipertensiune,boli de inima,boli renale,boli psihice,boli hepatice,boli endocrine</li>
+      <li>Sa nu ai piercing-uri sau tatuaje facute in ultimele 3 luni</li>
+      <li>        - Sa nu fi avut interventii chirurgicale
+               * mici in ultimele 6 luni (gen: interventie stomatologica)
+               * mari in ultimul an (gen: apendicita)
+      </li>
+      <li>
+              -  Pt femei/fete:
+                 * sa nu fie la ciclu
+                 * daca ai copil sub 1 an
+               </li>
+             </ul>
+           <div class="alert alert-info" role="alert">Iti trimitem un SMS cand exista o nevoie urgenta de sange.
+    Aboneaza-te mai jos!
+           </div>
+    <div class="form-group" id="phoneNumberArea">
+           <div class="input-group">
+     <span class="input-group-addon" id="basic-addon1">Telefon (+4)</span>
+     <input type="text" class="form-control" placeholder="07xxxxxxxx"  data-bind="value:number" type="number" id="phoneNumber" aria-describedby="basic-addon1">
+     </div>
+          </div>
+    </div>
+          <div class="modal-footer">
+            <label class="checkbox-inline">
+      <input type="checkbox" id="eligibleCheck" value="option1"> Sunt eligibil cu conditiile de mai sus
+    </label>
+            <button type="button" class="btn btn-primary" id="mySend" disabled >Trimite</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+
+    <!-- Modal 2-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel2">DONEAZA - Confirma SMS</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-info" role="alert">Introdu codul de confirmare primit pe SMS primit pe numarul<p id="sentNumber"></p>
+              <button type="button" class="btn btn-primary" id="myReSend" >Retrimite SMS</button>
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon2">SMS</span>
+              <input type="text" class="form-control" placeholder="xxxx"  data-bind="value:number" type="number" id="smsCode" aria-describedby="basic-addon2">
+            </div>
+            <div class="modal-footer">
+              <label class="checkbox-inline">
+              <button type="button" class="btn btn-primary" id="mySendSMS" disabled >Confirma</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3-->
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel3">DONEAZA -Mesaj confirmare</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-info" role="alert">Inregistrarea a fost realizata cu success</div>
+            <div class="modal-footer">
+              <label class="checkbox-inline">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid blood-footer">
+      <div class="container">
+        <div class="row blood-news">
+          <div class="col-md-4">
+            <h3>Medical</h3>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
+            </p>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi.
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Tweet-uri recente</h3>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
+            </p>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi.
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Newsletter</h3>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
+            </p>
+
+            <form class="form-inline">
+              <div class="form-group">
+                <input type="text" class="form-control" id="emil" placeholder="Email">
+              </div>
+              <button type="submit" class="btn btn-info" name="Trimite">Trimite</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="row blood-footer-contact">
+          <p class="first">
+            Copyright 2016 | All rights reserved by the Blood Network Team
+          </p>
+
+          <p class="second">
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Leagal Disclaimer</a>
+            <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
