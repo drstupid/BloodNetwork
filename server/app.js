@@ -99,6 +99,19 @@ app.get("/centers", function(request, response) {
     response.json(db.allCenters())
 })
 
+app.get("/news", function(request, response) {
+  response.json(db.allNews())
+})
+
+app.post("/news", urlencodedParser, function(request, response) {
+  if (!request.body) return response.sendStatus(400)
+
+  var title = request.body.title
+  var body = request.body.body
+  db.insertNews(title, body)
+  response.status(200).json({"status": "news saved"});
+})
+
 /// Pass this MIDDLEWARE to the POST that handles login
 var authenticate = passport.authenticate('local', { successRedirect: '/', failureRedirect: '/' })
 
