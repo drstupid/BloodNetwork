@@ -142,3 +142,8 @@ app.get('/insertAdmin', function (request, response) {
     db.insertUser({password: password, phoneNumber: phoneNumber, isAdmin: true, isVerified: true})
     response.redirect('/login');
 })
+
+// Schedule recurring notifications
+var notificationController = require("./notificationController")
+notificationController.initialize(db)
+notificationController.startNotifying()
