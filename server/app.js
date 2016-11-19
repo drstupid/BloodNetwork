@@ -8,7 +8,52 @@
  var db = require("./databaseController.js")
  registrationController.initialize(db)
 
+ var passport = require('passport')
+ var LocalStrategy = require('passport-local').Strategy
+
  app.use(express.static("src"))
+ var session = require('express-session')
+ app.use(session({ secret: 'AsSecretAsItGets' }))
+ app.use(passport.initialize())
+ app.use(passport.session())
+
+ var bCrypt = require("bcrypt-nodejs")
+ var createHash = function(password){
+     return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+ }
+ var isValidPassword = function(user, password){
+     return bCrypt.compareSync(password, user.password);
+}
+
+ passport.use('local', new LocalStrategy(
+  function(phoneNumber, password, done) {
+    var user = db.findUser(phoneNumber)
+    console.log(JSON.stringify(user))
+    if (!user || !isValidPassword(user, password)) {
+        return done(null, false, { message: 'Incorrect username or password.' });
+    }
+
+    return done(null, user);
+  }
+));
+
+passport.serializeUser(function(user, done) {
+    console.log("serializing User: " + user)
+    done(null, user.phoneNumber);
+});
+
+passport.deserializeUser(function(phoneNumber, done) {
+    console.log("deserializing user: "+ phoneNumber)
+    var user = db.findUser(phoneNumber)
+    if (user) {
+        console.log("deserialized")
+        done(null, user)
+    } else {
+        console.log("deserialized fail")
+        done (null, false)
+    }
+});
+
  app.listen(process.env.PORT || 8080, function(){
    console.log("Server started...")
  })
@@ -53,3 +98,13 @@ app.post("/phoneValidationAction", urlencodedParser, function(request, response)
 app.get("/centers", function(request, response) {
     response.json(db.allCenters())
 })
+
+/// Pass this MIDDLEWARE to the POST that handles login
+var authenticate = passport.authenticate('local', { successRedirect: '/', failureRedirect: '/' })
+
+/// Pass this MIDDLEWARE to any page that needs to be protected by authentication
+var isAuthenticated = function (request, response, next) {
+  if (request.isAuthenticated())
+    return next();
+  response.redirect('/');
+}
