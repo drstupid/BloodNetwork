@@ -1,13 +1,32 @@
-<form action="/login" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username"/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blood Network - Autentificare</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script type="text/javascript" src="bootstrap.js"></script>
+
+</head>
+<body>
+
+    <div class="" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1>Intra in cont</h1><br>
+                <form action="/login" method="post">
+                    <input type="text" name="username" placeholder="Numar de telefon">
+                    <input type="password" name="password" placeholder="Parola">
+                    <input type="submit" name="login" class="login loginmodal-submit" value="Autentificare">
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password"/>
-    </div>
-    <div>
-        <input type="submit" value="Log In"/>
-    </div>
-</form>
+
+</body>
+</html>
