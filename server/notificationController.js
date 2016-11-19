@@ -58,7 +58,7 @@ module.exports = Pattern.extend({
 
         var numberOfNotificationsSent = 0
         users.forEach(function(user) {
-            if (user.bloodType == bloodType) {
+            if (user.bloodType == bloodType || bloodType == "All") {
                 user.lastNotified = currentDateInMilliseconds()
                 db.updateUser(user)
                 numberOfNotificationsSent = numberOfNotificationsSent + 1
