@@ -7,7 +7,7 @@ APP.stash = {
 APP.gmap = {
     mapContainer: null,
     map: null,
-    center: {lat: 45.9261619, lng: 22.7662909},
+    center: {lat: 46.048836, lng: 24.884033},
     zoom: 6,
 
     pins: [],
@@ -15,7 +15,7 @@ APP.gmap = {
 
     addPin2Gmap: function(poi) {
         if ( (poi) && (typeof poi === "object") ) {
-            var point = {lat: parseFloat(poi.lat), lng: parseFloat(poi.long)}
+            var point = {lat: parseFloat(poi.lat), lng: parseFloat(poi.lng)}
             APP.gmap.pins.push(point);
         }
     },
@@ -31,7 +31,7 @@ APP.gmap = {
 
     showPinOnGmap: function(centerPoint) {
         APP.gmap.map.setCenter(centerPoint);
-        APP.gmap.map.setZoom(18);
+        APP.gmap.map.setZoom(16);
     }
 
 };
@@ -73,7 +73,7 @@ $(document).ready(function() {
         APP.stash.entries = data;
 
         $.each(data, function(index, entry) {
-            var $li = $("<li><a href='javascript:void(0)' data-coords='" + JSON.stringify(entry.coords) + "'>" + entry.name + "<br/><small>" + entry.address + "</small></a></li>");
+            var $li = $("<li><a href='javascript:void(0)' data-coords='" + JSON.stringify(entry.coords) + "'><span>" + entry.name + "</span><br/><small>" + entry.address + "</small></a></li>");
             $("#location-centers").append($li);
 
             APP.gmap.addPin2Gmap(entry.coords);
@@ -81,10 +81,17 @@ $(document).ready(function() {
             $li.find("a").first().click(function(event){
                 event.preventDefault();
                 var centerLocation = $(this).data("coords");
-                var pos = {lat: parseFloat(centerLocation.lat), lng: parseFloat(centerLocation.long)};
+                var pos = {lat: parseFloat(centerLocation.lat), lng: parseFloat(centerLocation.lng)};
 
                 if ( (pos.lat) && (pos.lng) ) {
                     APP.gmap.showPinOnGmap(pos);
+
+                    var centerName =  $(this).find("span").html();
+                    var centerAddress =  $(this).find("small").html();
+
+                    var $infoContainer = $("div#centerInfo");
+                    $infoContainer.find("p.js-center-name").first().html(centerName);
+                    $infoContainer.find("p.js-center-address").first().html(centerAddress);
                 } else {
                     console.log("Center does not have a locaiton set!");
                 }

@@ -121,56 +121,52 @@ Sângele are o durata de viaţă limitată:
     </div>
     </div>
   </div>
+
 <div class="row">
   <div class="jumbotron text-left">
     <p>
       UNDE?
     </p>
+
     <table class="table" style=" width: 100%;">
-  <tr>
-    <td style="width:50%">
-      <div id="map" style=" height: 400px; width: 100%;"></div>
-    </td>
-    <td>
-
-        <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
-                <ul class="dropdown-menu" id="location-centers">
-
-                </ul>
-              </div>
-
-      NUME CENTRU<br>
-      Centrul de Transfuzie Sanguina<br>
-      ADRESA<br>
-      Bl. Liviu Rebreanu, nr 00<br>
-
-      <table><th>ORAR</th>
-        <tr>
-          <td>Luni - Vineri
-          </td>
-          <td>
-            08:00 - 20:00
-          </td>
-      </tr>
       <tr>
-        <td>Sambata
+        <td style="width:50%">
+          <div id="map" style=" height: 400px; width: 100%;"></div>
         </td>
         <td>
-          08:00 - 12:00
+
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
+                <ul class="dropdown-menu" id="location-centers">
+                </ul>
+            </div>
+            <div class="row">&nbsp;</div> <!-- spacer -->
+            <div id="centerInfo" class="row-fluid">
+                <p><strong>NUME CENTRU</strong></p>
+                <p class="js-center-name">-</p>
+                <p><strong>ADRESA</strong></p>
+                <p class="js-center-address">-</p>
+                <p><strong>ORAR</strong></p>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-6">Luni-Vineri</div>
+                        <div class="col-xs-6">08:00 - 20:00</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Sambata</div>
+                        <div class="col-xs-6">08:00 - 12:00</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">Duminica</div>
+                        <div class="col-xs-6">Inchis</div>
+                    </div>
+                </div>
+            </div>
+
         </td>
-    </tr>
-    <tr>
-      <td>Duminica
-      </td>
-      <td>
-        Inchis
-      </td>
-  </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+      </tr>
+    </table>
+
     </div>
   </div>
 
