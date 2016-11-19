@@ -21,7 +21,7 @@ p.section-title {
 }
 
 a:hover, a:focus {
-  color: greenyellow;
+  color: red;
 }
 .bn-header-empty{
   height: 46px;
