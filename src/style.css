@@ -74,3 +74,25 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 h4{
 color:#888888;
 }
+
+.blood-footer {
+  background-color: #3a3c41;
+  color: white;
+}
+.blood-news {
+  padding: 70px 0;
+}
+.blood-footer p {
+  font-size: 12px;
+  color: #7f828a;
+}
+.blood-footer-contact {
+  padding: 30px 0;
+  border-top: 1px solid #4a4c52;
+}
+.blood-footer-contact p.first {
+  float: left;
+}
+.blood-footer-contact p.second {
+  float: right;
+}
