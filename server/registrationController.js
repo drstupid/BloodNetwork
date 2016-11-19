@@ -45,7 +45,7 @@ module.exports = Pattern.extend({
     registerPhoneNumber: function (phoneNumber, completion) {
         var validationCode = getValidationCode()
 
-        if (db.insertUser(phoneNumber, validationCode, false)) {
+        if (db.insertUser({phoneNumber: phoneNumber, validationCode: validationCode, isVerified: false})) {
           sendMessage(phoneNumber, validationCode, function (err, response) {
             if (err) {
               completion(err, "Va rugam sa verificati numarul de telefon introdus.")

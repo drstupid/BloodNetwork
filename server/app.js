@@ -13,7 +13,7 @@
 
  app.use(express.static("src"))
  var session = require('express-session')
- app.use(session({ secret: 'keyboard cat' }))
+ app.use(session({ secret: 'AsSecretAsItGets' }))
  app.use(passport.initialize())
  app.use(passport.session())
 
@@ -21,33 +21,33 @@
  var createHash = function(password){
      return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
  }
- var isValidPassword = function(admin, password){
-     return bCrypt.compareSync(password, admin.password);
+ var isValidPassword = function(user, password){
+     return bCrypt.compareSync(password, user.password);
 }
 
  passport.use('local', new LocalStrategy(
-  function(username, password, done) {
-    var admin = db.findAdmin(username)
-    console.log(JSON.stringify(admin))
-    if (!admin || !isValidPassword(admin, password)) {
+  function(phoneNumber, password, done) {
+    var user = db.findUser(phoneNumber)
+    console.log(JSON.stringify(user))
+    if (!user || !isValidPassword(user, password)) {
         return done(null, false, { message: 'Incorrect username or password.' });
     }
 
-    return done(null, admin);
+    return done(null, user);
   }
 ));
 
 passport.serializeUser(function(user, done) {
     console.log("serializing User: " + user)
-    done(null, user.username);
+    done(null, user.phoneNumber);
 });
 
-passport.deserializeUser(function(username, done) {
-    console.log("deserializing user: "+ username)
-    var admin = db.findAdmin(username)
-    if (admin) {
+passport.deserializeUser(function(phoneNumber, done) {
+    console.log("deserializing user: "+ phoneNumber)
+    var user = db.findUser(phoneNumber)
+    if (user) {
         console.log("deserialized")
-        done(null, admin)
+        done(null, user)
     } else {
         console.log("deserialized fail")
         done (null, false)
@@ -100,11 +100,11 @@ app.get("/centers", function(request, response) {
 })
 
 /// Pass this MIDDLEWARE to the POST that handles login
-var authenticate = passport.authenticate('local', { successRedirect: '/logged', failureRedirect: '/muie' })
+var authenticate = passport.authenticate('local', { successRedirect: '/', failureRedirect: '/' })
 
 /// Pass this MIDDLEWARE to any page that needs to be protected by authentication
-var isAuthenticated = function (req, res, next) {
-  if (req.isAuthenticated())
+var isAuthenticated = function (request, response, next) {
+  if (request.isAuthenticated())
     return next();
-  res.redirect('/muie');
+  response.redirect('/');
 }
