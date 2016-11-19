@@ -141,8 +141,6 @@ $(document).ready(function() {
         /** MODAL 1 SUBMIT FORM */
         // data: "number=+4"+$('#phoneNumber').val(),
             $('#mySend').on('click', function (e) {
-              $('#myModal').modal('hide');
-              $('#myModal2').modal('show');
               if(validatePhoneNumber($("#phoneNumber").val())){
                   $.ajax({
                                  type: "POST",
