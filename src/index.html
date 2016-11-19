@@ -2,16 +2,25 @@
 <html>
 <head>
    <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
    <title>Blood Network</title>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
    <link rel="stylesheet" type="text/css" href="style.css">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <script type="text/javascript" src="bootstrap.js"></script>
    <script type="text/javascript" src="main.controller.js"></script>
+
 </head>
 <body>
-<div class="container">
+
+
+<!-- NAVIGATION -->
+
+<div class="container-fluid">
    <nav class=" navbar-static-top">
       <div class="container bn-header-empty">
          Bun venit pe Blood Network
@@ -41,7 +50,12 @@
       </div>
    </nav>
 </div>
-<div class="container">
+
+
+<!-- SLIDER -->
+
+<div class="container-fluid">
+
    <div class="row">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
          <!-- Indicators -->
@@ -72,6 +86,7 @@
          </a>
       </div>
    </div>
+
    <div class="row">
       <div class="jumbotron text-left" style="background-color:#FFFFFF">
          <div class="row">
@@ -115,6 +130,7 @@
          </div>
       </div>
    </div>
+
    <div class="row">
       <div class="jumbotron text-left">
          <p>
@@ -161,7 +177,61 @@
          </table>
       </div>
    </div>
+
 </div>
+
+<!-- FOOTER -->
+
+<div class="container-fluid blood-footer">
+   <div class="container">
+      <div class="row blood-news">
+         <div class="col-md-4">
+            <h3>Medical</h3>
+            <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
+            </p>
+            <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi.
+            </p>
+         </div>
+         <div class="col-md-4">
+            <h3>Tweet-uri recente</h3>
+            <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
+            </p>
+            <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi.
+            </p>
+         </div>
+         <div class="col-md-4">
+            <h3>Newsletter</h3>
+            <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
+            </p>
+            <form class="form-inline">
+               <div class="form-group">
+                  <input type="text" class="form-control" id="emil" placeholder="Email">
+               </div>
+               <button type="submit" class="btn btn-info" name="Trimite">Trimite</button>
+            </form>
+         </div>
+      </div>
+      <div class="row blood-footer-contact">
+         <p class="first">
+            Copyright 2016 | All rights reserved by the Blood Network Team
+         </p>
+         <p class="second">
+            <a href="#">Terms &amp; Conditions</a>
+            <a href="#">Leagal Disclaimer</a>
+            <a href="#">Privacy Policy</a>
+         </p>
+      </div>
+   </div>
+</div>
+
+
+<!-- MODAL WINDOWS -->
+
 <!-- Modal 1-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
    <form id="contact-form" method="post" action="" role="form">
@@ -232,6 +302,7 @@
       </div>
    </form>
 </div>
+
 <!-- Modal 2-->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
    <div class="modal-dialog" role="document">
@@ -258,6 +329,7 @@
       </div>
    </div>
 </div>
+
 <!-- Modal 3-->
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
    <div class="modal-dialog" role="document">
@@ -275,52 +347,7 @@
       </div>
    </div>
 </div>
-<div class="container-fluid blood-footer">
-   <div class="container">
-      <div class="row blood-news">
-         <div class="col-md-4">
-            <h3>Medical</h3>
-            <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
-            </p>
-            <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi.
-            </p>
-         </div>
-         <div class="col-md-4">
-            <h3>Tweet-uri recente</h3>
-            <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
-            </p>
-            <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi.
-            </p>
-         </div>
-         <div class="col-md-4">
-            <h3>Newsletter</h3>
-            <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu fermentum elit, eget sollicitudin nisi. Maecenas cursus elit ut leo tristique, et hendrerit leo ultricies. Fusce ultricies posuere metus, mattis elementum mi tempus in.
-            </p>
-            <form class="form-inline">
-               <div class="form-group">
-                  <input type="text" class="form-control" id="emil" placeholder="Email">
-               </div>
-               <button type="submit" class="btn btn-info" name="Trimite">Trimite</button>
-            </form>
-         </div>
-      </div>
-      <div class="row blood-footer-contact">
-         <p class="first">
-            Copyright 2016 | All rights reserved by the Blood Network Team
-         </p>
-         <p class="second">
-            <a href="#">Terms &amp; Conditions</a>
-            <a href="#">Leagal Disclaimer</a>
-            <a href="#">Privacy Policy</a>
-         </p>
-      </div>
-   </div>
-</div>
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdiTvfa3n-rAXyyuuDgA0310qcIjUPkUM&callback=initGMap"></script>
 </body>
 </html>

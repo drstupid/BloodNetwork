@@ -9,7 +9,7 @@ APP.gmap = {
     map: null,
     center: {lat: 46.048836, lng: 24.884033},
     zoom: 6,
-
+    infoWindows: [],
     pins: [],
     loadedPins: false,
 
