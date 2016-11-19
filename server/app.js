@@ -98,7 +98,7 @@ app.get("/news", function(request, response) {
   response.json(db.allNews())
 })
 
-app.post("/news", urlencodedParser, function(request, response) {
+app.post("/insertNewsAction", urlencodedParser, function(request, response) {
   if (!request.body) return response.sendStatus(400)
 
   var title = request.body.title
