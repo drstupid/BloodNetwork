@@ -18,7 +18,6 @@ function getValidationCode() {
 }
 
 function sendMessage(phoneNumber, validationCode, completion) {
-/*
   client.messages.create({
       to: phoneNumber,
       from: "+18584616763",
@@ -31,7 +30,6 @@ function sendMessage(phoneNumber, validationCode, completion) {
           console.log(JSON.stringify(err))
       }
   });
-  */
 }
 
 var db
