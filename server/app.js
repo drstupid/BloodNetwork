@@ -28,7 +28,6 @@
  passport.use('local', new LocalStrategy(
   function(phoneNumber, password, done) {
     var user = db.findUser(phoneNumber)
-    console.log(JSON.stringify(user))
     if (!user || !isValidPassword(user, password)) {
         return done(null, false, { message: 'Incorrect username or password.' });
     }
@@ -38,18 +37,14 @@
 ));
 
 passport.serializeUser(function(user, done) {
-    console.log("serializing User: " + user)
     done(null, user.phoneNumber);
 });
 
 passport.deserializeUser(function(phoneNumber, done) {
-    console.log("deserializing user: "+ phoneNumber)
     var user = db.findUser(phoneNumber)
     if (user) {
-        console.log("deserialized")
         done(null, user)
     } else {
-        console.log("deserialized fail")
         done (null, false)
     }
 });
@@ -99,12 +94,51 @@ app.get("/centers", function(request, response) {
     response.json(db.allCenters())
 })
 
+app.get("/news", function(request, response) {
+  response.json(db.allNews())
+})
+
+app.post("/insertNewsAction", urlencodedParser, function(request, response) {
+  if (!request.body) return response.sendStatus(400)
+
+  var title = request.body.title
+  var body = request.body.body
+  db.insertNews(title, body)
+  response.status(200).json({"status": "news saved"});
+})
+
 /// Pass this MIDDLEWARE to the POST that handles login
-var authenticate = passport.authenticate('local', { successRedirect: '/', failureRedirect: '/' })
+var authenticate = passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/login' })
 
 /// Pass this MIDDLEWARE to any page that needs to be protected by authentication
 var isAuthenticated = function (request, response, next) {
   if (request.isAuthenticated())
     return next();
-  response.redirect('/');
+  response.redirect('/login');
 }
+
+app.get("/login", function(request, response) {
+  response.sendFile("login.html", {root: path.join(__dirname, "../src")})
+})
+
+app.post("/login", urlencodedParser, authenticate)
+
+app.get("/admin", urlencodedParser, isAuthenticated, function(request, response) {
+    if (request.user.isAdmin) {
+        response.sendFile("admin.html", {root: path.join(__dirname, "../src")})
+    } else {
+        response.redirect('/');
+    }
+})
+
+app.post('/logout', function(request, response){
+  request.logout();
+  response.redirect('/login');
+});
+
+app.get('/insertAdmin', function (request, response) {
+    var password = createHash("admin")
+    var phoneNumber = "1234"
+    db.insertUser({password: password, phoneNumber: phoneNumber, isAdmin: true, isVerified: true})
+    response.redirect('/login');
+})
