@@ -6,6 +6,36 @@ LOGGED
     </div>
 </form>
 
+<!--Scheduled SMS-->
+<form action="/scheduleSMSAlertAction" method="post" enctype="application/x-www-form-urlencoded">
+  <label for="body">Continut SMS:</label>
+  <textarea rows="4" cols="100" name="body" placeholder="Mesaj" ></textarea>
+  <br/>
+  <input type="submit" value="Schedule alerte SMS"/>
+</form>
+
+<!--Instant SMS-->
+<form action="/instantSMSAlertAction" method="post" enctype="application/x-www-form-urlencoded">
+  <label for="title">Grupa de sange:</label>
+  <select name="bloodType">
+    <option value="O+">Toate</option>
+    <option value="O+">O+</option>
+    <option value="O-">O-</option>
+    <option value="A+">A+</option>
+    <option value="A-">A-</option>
+    <option value="B+">B+</option>
+    <option value="B-">B-</option>
+    <option value="AB+">AB+</option>
+    <option value="AB-">AB-</option>
+  </select>
+  <br/>
+  <label for="body">Continut SMS:</label>
+  <textarea rows="4" cols="100" name="body" placeholder="Mesaj" ></textarea>
+  <br/>
+  <input type="submit" value="Trimite alerta SMS"/>
+</form>
+
+<!--News-->
 <form action="/insertNewsAction" method="post" enctype="application/x-www-form-urlencoded">
   <label for="title">Titlu:</label>
   <input type="text" name="title" placeholder="Titlu" />
