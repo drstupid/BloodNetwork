@@ -114,6 +114,12 @@ $(document).ready(function() {
         }
     }
 
+    /** PHONE NUMBER VALIDATOR */
+    $(document.body).on("keypress", "input#phoneNumber", function(e) {
+        var verified = (e.which == 8 || e.which == undefined || e.which == 0) ? null : String.fromCharCode(e.which).match(/[^0-9]/);
+
+        if ( (verified) || ($(this).val().length > 10) ) {e.preventDefault();}
+    });
 
     /** MODAL 1 **********************************************************/
     /*********************************************************************/
