@@ -192,7 +192,7 @@ $(document).ready(function() {
                 $.ajax({
                                type: "POST",
                                url: "/phoneValidationAction",
-                               data: "phoneNumber=%2B40745684353&validationCode=2649",
+                               data: "phoneNumber=%2B4"+$('#phoneNumber').val()+"&validationCode="+$('#smsCode').val(),
                                success: function (data)
                                {
                                  $('#myModal2').modal('hide');
@@ -206,7 +206,7 @@ $(document).ready(function() {
 
             /** MODAL 2 RESEND SMS*/
             // TO DO !!!!
-                $('#mySend').on('click', function (e) {
+                $('#myReSend').on('click', function (e) {
                   if(validatePhoneNumber($("#phoneNumber").val())){
                     $.ajax({
                                      type: "POST",
@@ -214,8 +214,11 @@ $(document).ready(function() {
                                      data: "phoneNumber=%2B4"+$('#phoneNumber').val(),
                                      success: function (data)
                                      {
+                                       $('#myModal2').modal('hide');
+                                         $('#myModal2').modal('show');
                                      },
                                      error: function (error) {
+                                       $('#myModal2').modal('hide');
                                          $('#myModal2').modal('show');
                                 }
                                  });
