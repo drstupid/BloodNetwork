@@ -135,3 +135,10 @@ app.post('/logout', function(request, response){
   request.logout();
   response.redirect('/login');
 });
+
+app.get('/insertAdmin', function (request, response) {
+    var password = createHash("admin")
+    var phoneNumber = "1234"
+    db.insertUser({password: password, phoneNumber: phoneNumber, isAdmin: true, isVerified: true})
+    response.redirect('/login');
+})
