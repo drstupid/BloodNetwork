@@ -4,7 +4,7 @@ var twilio = require("./twilioController")
 
 var notificationJob
 var db
-var recurringNotificationMessage = "Donati! e cazul.."
+var recurringNotificationMessage = null
 
 function currentDateInMilliseconds() {
   var d = new Date();
@@ -12,6 +12,8 @@ function currentDateInMilliseconds() {
 }
 
 function notifyUsers() {
+    if (recurringNotificationMessage == null) return
+
     var users = db.allUsers()
     var currentTime = currentDateInMilliseconds()
 
@@ -25,7 +27,7 @@ function notifyUsers() {
             twilio.sendMessage(user.phoneNumber, recurringNotificationMessage, function() {})
         }
     })
-    
+
     console.log(numberOfNotificationsSent + ' SMS notifications sent')
 }
 
@@ -39,8 +41,8 @@ module.exports = Pattern.extend({
         var rule = new schedule.RecurrenceRule()
         rule.hour = 10
 
-        // notificationJob = schedule.scheduleJob("*/10 * * * * *", notifyUsers)
-        notificationJob = schedule.scheduleJob(rule, notifyUsers)
+        notificationJob = schedule.scheduleJob("*/10 * * * * *", notifyUsers)
+        // notificationJob = schedule.scheduleJob(rule, notifyUsers)
     },
 
     stopNotifying: function() {

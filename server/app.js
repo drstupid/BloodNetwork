@@ -49,6 +49,11 @@ passport.deserializeUser(function(phoneNumber, done) {
     }
 });
 
+ // Schedule recurring notifications
+ var notificationController = require("./notificationController")
+ notificationController.initialize(db)
+ notificationController.startNotifying()
+
  app.listen(process.env.PORT || 8080, function(){
    console.log("Server started...")
  })
@@ -111,7 +116,7 @@ app.post("/scheduleSMSAlertAction", urlencodedParser, function(request, response
   if (!request.body) return response.sendStatus(400)
 
   var body = request.body.body
-  // call schedule method
+  notificationController.setRecurringNotificationMessage(body)
   response.status(200).json({"message": "sms alert scheduled"})
 })
 
@@ -120,7 +125,9 @@ app.post("/instantSMSAlertAction", urlencodedParser, function(request, response)
 
   var bloodType = request.body.bloodType
   var body = request.body.body
-  // call send sms with blood type
+
+  notificationController.sendInstantNotification(bloodType, body)
+
   response.status(200).json({"message": "sms alert sent"})
 })
 
@@ -159,8 +166,3 @@ app.get('/insertAdmin', function (request, response) {
     db.insertUser({password: password, phoneNumber: phoneNumber, isAdmin: true, isVerified: true})
     response.redirect('/login');
 })
-
-// Schedule recurring notifications
-var notificationController = require("./notificationController")
-notificationController.initialize(db)
-notificationController.startNotifying()
