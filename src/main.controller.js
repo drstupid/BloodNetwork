@@ -9,7 +9,7 @@ APP.gmap = {
     map: null,
     center: {lat: 46.048836, lng: 24.884033},
     zoom: 6,
-
+    infoWindows: [],
     pins: [],
     loadedPins: false,
 
@@ -73,7 +73,7 @@ $(document).ready(function() {
         APP.stash.entries = data;
 
         $.each(data, function(index, entry) {
-            var $li = $("<li><a href='javascript:void(0)' data-coords='" + JSON.stringify(entry.coords) + "'><span>" + entry.name + "</span><br/><small>" + entry.address + "</small></a></li>");
+            var $li = $("<li><a href='javascript:void(0)' data-phones='" + JSON.stringify(entry.tel) + "' data-coords='" + JSON.stringify(entry.coords) + "'><span>" + entry.name + "</span><br/><small>" + entry.address + "</small></a></li>");
             $("#location-centers").append($li);
 
             APP.gmap.addPin2Gmap(entry.coords);
@@ -88,10 +88,19 @@ $(document).ready(function() {
 
                     var centerName =  $(this).find("span").html();
                     var centerAddress =  $(this).find("small").html();
+                    var centerPhones = $(this).data("phones");
+
+                    if (!centerPhones) {
+                        centerPhones = [];
+                    } else if (typeof centerPhones !== "Array") {
+                        centerPhones = [centerPhones];
+                    }
 
                     var $infoContainer = $("div#centerInfo");
                     $infoContainer.find("p.js-center-name").first().html(centerName);
                     $infoContainer.find("p.js-center-address").first().html(centerAddress);
+                    $infoContainer.find("p.js-center-phone").first().html(centerPhones.join(", "));
+
                 } else {
                     console.log("Center does not have a locaiton set!");
                 }
@@ -105,6 +114,12 @@ $(document).ready(function() {
         }
     }
 
+    /** PHONE NUMBER VALIDATOR */
+    $(document.body).on("keypress", "input#phoneNumber", function(e) {
+        var verified = (e.which == 8 || e.which == undefined || e.which == 0) ? null : String.fromCharCode(e.which).match(/[^0-9]/);
+
+        if ( (verified) || ($(this).val().length > 10) ) {e.preventDefault();}
+    });
 
     /** MODAL 1 **********************************************************/
     /*********************************************************************/

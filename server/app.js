@@ -107,6 +107,23 @@ app.post("/insertNewsAction", urlencodedParser, function(request, response) {
   response.status(200).json({"status": "news saved"});
 })
 
+app.post("/scheduleSMSAlertAction", urlencodedParser, function(request, response) {
+  if (!request.body) return response.sendStatus(400)
+
+  var body = request.body.body
+  // call schedule method
+  response.status(200).json({"message": "sms alert scheduled"})
+})
+
+app.post("/instantSMSAlertAction", urlencodedParser, function(request, response) {
+  if (!request.body) return response.sendStatus(400)
+
+  var bloodType = request.body.bloodType
+  var body = request.body.body
+  // call send sms with blood type
+  response.status(200).json({"message": "sms alert sent"})
+})
+
 /// Pass this MIDDLEWARE to the POST that handles login
 var authenticate = passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/login' })
 
