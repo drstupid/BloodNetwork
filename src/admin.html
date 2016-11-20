@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
 LOGGED
 
 <form action="/logout" method="post">
@@ -6,12 +17,88 @@ LOGGED
     </div>
 </form>
 
-<form action="/insertNewsAction" method="post" enctype="application/x-www-form-urlencoded">
-  <label for="title">Titlu:</label>
-  <input type="text" name="title" placeholder="Titlu" />
-  <br/>
-  <label for="body">Continut:</label>
-  <textarea rows="4" cols="100" name="body" placeholder="Continut" ></textarea>
-  <br/>
-  <input type="submit" value="Adauga Stire"/>
-</form>
+
+<div class="container">
+  <div class="panel-group" id="accordion">
+
+    <div class="panel panel-default">
+      <div class="panel-heading"  style="background-color:#67C9E0">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Programare notificari SMS recurente</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+<!--Scheduled SMS-->
+          <form action="/scheduleSMSAlertAction" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="body">Continut SMS:</label>
+            <textarea rows="4" cols="100" name="body" placeholder="Mesaj" ></textarea>
+            <br/>
+            <input type="submit" value="Schedule alerte SMS"/>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading" style="background-color:#67C9E0">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">SMS instant</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+<!--Instant SMS-->
+          <form action="/instantSMSAlertAction" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="title">Grupa de sange:</label>
+            <select name="bloodType">
+              <option value="All">Toate</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+            <br/>
+            <label for="body">Continut SMS:</label>
+            <textarea rows="4" cols="100" name="body" placeholder="Mesaj" ></textarea>
+            <br/>
+            <input type="submit" value="Trimite alerta SMS"/>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading" style="background-color:#67C9E0">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Sectiune Stiri</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+<!--News-->
+          <form action="/insertNewsAction" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="title">Titlu:</label>
+            <input type="text" name="title" placeholder="Titlu" />
+            <br/>
+            <label for="body">Continut:</label>
+            <textarea rows="4" cols="100" name="body" placeholder="Continut" ></textarea>
+            <br/>
+            <input type="submit" value="Adauga Stire"/>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

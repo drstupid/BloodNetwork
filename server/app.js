@@ -49,6 +49,11 @@ passport.deserializeUser(function(phoneNumber, done) {
     }
 });
 
+ // Schedule recurring notifications
+ var notificationController = require("./notificationController")
+ notificationController.initialize(db)
+ notificationController.startNotifying()
+
  app.listen(process.env.PORT || 8080, function(){
    console.log("Server started...")
  })
@@ -105,6 +110,25 @@ app.post("/insertNewsAction", urlencodedParser, function(request, response) {
   var body = request.body.body
   db.insertNews(title, body)
   response.status(200).json({"status": "news saved"});
+})
+
+app.post("/scheduleSMSAlertAction", urlencodedParser, function(request, response) {
+  if (!request.body) return response.sendStatus(400)
+
+  var body = request.body.body
+  notificationController.setRecurringNotificationMessage(body)
+  response.status(200).json({"message": "sms alert scheduled"})
+})
+
+app.post("/instantSMSAlertAction", urlencodedParser, function(request, response) {
+  if (!request.body) return response.sendStatus(400)
+
+  var bloodType = request.body.bloodType
+  var body = request.body.body
+
+  notificationController.sendInstantNotification(bloodType, body)
+
+  response.status(200).json({"message": "sms alert sent"})
 })
 
 /// Pass this MIDDLEWARE to the POST that handles login
