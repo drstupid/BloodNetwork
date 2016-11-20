@@ -67,9 +67,14 @@ $(document).ready(function() {
       interval: 2000
     })
 
+
+    $.getJSON("/news", function(data) {
+        APP.controllers.news.initNews(data);
+    });
+
     $.getJSON("/centers", function(data) {
         initializeLocations(data);
-    })
+    });
 
     //populate city lists
     function initializeLocations(data) {
@@ -317,3 +322,31 @@ $('a[href^="#"]').on('click',function (e) {
         //missing
 
 });
+
+
+APP.controllers = {};
+APP.controllers.news = {
+
+        initNews: function(entries) {
+            APP.stash.news = entries;
+            var latest3 = [];
+            // Select only the latest 3
+            $.each(entries, function(i,entry){
+                latest3.push(entry);
+            });
+            APP.controllers.news.showLatestNews(latest3);
+        },
+
+        showLatestNews: function(entries) {
+            $.each(entries, function(i,entry) {
+                var entryTitle = entry.title;
+                var entryText = entry.body;
+                var entryDate = entry.date;
+
+                var $newsItemContainer = $("div.panel-news-" + i);
+                $newsItemContainer.find(".panel-heading").first().html(entryTitle);
+                $newsItemContainer.find(".panel-body").first().html(entryText);
+                $newsItemContainer.find(".panel-footer").first().html(entryDate);
+            });
+        }
+};

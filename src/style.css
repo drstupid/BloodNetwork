@@ -278,3 +278,34 @@ li small {
   top: -76px;
   position:relative;
 }
+
+.panel-info-custom {
+  border-radius:0 !important;
+}
+
+.panel-info-title {
+  height: 56px;
+}
+
+.panel-info-body {
+  height: 300px;
+  overflow: scroll;
+}
+
+.text-header p {
+  margin-bottom: 0 !important;
+}
+
+.text-small {
+  font-size: 8px;
+}
+
+.text-small p {
+  font-size: 8px;
+  margin-bottom: 0 !important;
+}
+
+.text-small span {
+  font-size: 8px;
+  color: #DDD;
+}
