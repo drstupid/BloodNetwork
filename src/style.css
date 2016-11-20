@@ -21,7 +21,7 @@ p.section-title {
 }
 
 a:hover, a:focus {
-  color: greenyellow;
+  color: black;
 }
 .bn-header-empty{
   height: 46px;
@@ -229,4 +229,9 @@ li small {
 
 .login-help{
   font-size: 12px;
+}
+
+.less-padding{
+  padding-bottom: 20px;
+  padding-bottom: 20px;
 }
