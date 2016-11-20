@@ -94,7 +94,7 @@
                   <div class="jumbotron jumbo" style=" background-color:transparent !important;text-align:left">
                      <!-- Button trigger modal -->
                      <button type="button" class="btn btn-danger  btn-lg"
-                             data-toggle="modal" data-target="#myModal"> Doneaza </button></p>
+                             data-toggle="modal" data-target="#myModal"> Doneaza </button>
                   </div>
                </div>
             </div>
@@ -362,22 +362,27 @@
                <div class="alert alert-info" role="alert">Iti trimitem un SMS cand exista o nevoie urgenta de sange.
                   Aboneaza-te mai jos!
                </div>
-               <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuBG" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Alege grupa ta de sange
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuBG">
-    <li><a href="#">O+</a></li>
-    <li><a href="#">O-</a></li>
-    <li><a href="#">A+</a></li>
-    <li><a href="#">A+</a></li>
-      <li><a href="#">B+</a></li>
-        <li><a href="#">B-</a></li>
-        <li><a href="#">AB+</a></li>
-          <li><a href="#">AB-</a></li>
-  </ul>
-</div><br>
+
+
+               <div class="form-group">
+                 <div class="input-group">
+                 <span class="input-group-addon" id="basic-addon1">Alege grupa sanguina</span>
+                 <div class="">
+                   <select id="bloodType" name="bloodType"  class="form-control">
+                     <option value="All">Nu &#351;tiu</option>
+                     <option value="O+">O+</option>
+                     <option value="O-">O-</option>
+                     <option value="A+">A+</option>
+                     <option value="A-">A-</option>
+                     <option value="B+">B+</option>
+                     <option value="B-">B-</option>
+                     <option value="AB+">AB+</option>
+                     <option value="AB-">AB-</option>
+                   </select>
+                 </div>
+               </div>
+               </div>
+               <br>
                <div class="form-group" id="phoneNumberArea">
                   <div class="input-group">
                      <span class="input-group-addon" id="basic-addon1">Telefon (+4)</span>
@@ -423,7 +428,6 @@
       </div>
    </div>
 </div>
-
 <!-- Modal 3-->
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
    <div class="modal-dialog" role="document">
@@ -437,9 +441,10 @@
                <label class="checkbox-inline">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
             </div>
-         </div>
+
       </div>
    </div>
+</div>
 </div>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdiTvfa3n-rAXyyuuDgA0310qcIjUPkUM&callback=initGMap"></script>

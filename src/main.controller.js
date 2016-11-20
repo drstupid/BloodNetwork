@@ -227,14 +227,17 @@ $('a[href^="#"]').on('click',function (e) {
                   $.ajax({
                                  type: "POST",
                                  url: "/registrationAction",
-                                 data: "phoneNumber=%2B4"+$('#phoneNumber').val(),
+                                 data: "phoneNumber=%2B4"+$('#phoneNumber').val()+"&bloodType="+$('#bloodType').val(),
                                  success: function (data)
                                  {
                                    $('#myModal').modal('hide');
                                    $('#myModal2').modal('show');
                                  },
                                  error: function (error) {
-
+                                //   alert(JSON.stringify(error));
+                                   $("#phoneNumberArea").prop('class','form-group has-error has-feedback');
+                                   $("#phoneNumber").prop('placeholder',error.responseJSON.error);
+                                   $("#phoneNumber").prop('value','')
                             }
                              });
                   }
@@ -285,7 +288,7 @@ $('a[href^="#"]').on('click',function (e) {
                                  $('#myModal3').modal('show');
                                },
                                error: function (error) {
-
+alert("error");
                           }
                            });
             })
@@ -301,7 +304,7 @@ $('a[href^="#"]').on('click',function (e) {
                                      success: function (data)
                                      {
                                        $('#myModal2').modal('hide');
-                                         $('#myModal2').modal('show');
+                                         $('#myModal3').modal('show');
                                      },
                                      error: function (error) {
                                        $('#myModal2').modal('hide');

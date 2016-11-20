@@ -13,7 +13,7 @@ module.exports = Pattern.extend({
         client.messages.create({
             to: phoneNumber,
             from: "+18584616763",
-            body: message,
+            body: "Blood Network - " + message,
         }, function(err, response) {
             completion(err, response)
             if (!err) {

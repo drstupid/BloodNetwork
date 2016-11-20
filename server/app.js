@@ -67,8 +67,9 @@ app.post("/registrationAction", urlencodedParser, function(request, response) {
   if (!request.body) return response.sendStatus(400)
 
   var phoneNumber = request.body.phoneNumber
+  var bloodType = request.body.bloodType
   console.log("post from registrationAction: " + phoneNumber)
-  registrationController.registerPhoneNumber(phoneNumber, function(err, message) {
+  registrationController.registerPhoneNumber(phoneNumber, bloodType, function(err, message) {
     if(!err) {
       response.status(200).json({"phoneNumber": phoneNumber})
     } else {
@@ -100,7 +101,7 @@ app.get("/centers", function(request, response) {
 })
 
 app.get("/news", function(request, response) {
-  response.json(db.allNews())
+  response.json(db.recentNews())
 })
 
 app.post("/insertNewsAction", urlencodedParser, function(request, response) {
@@ -110,6 +111,14 @@ app.post("/insertNewsAction", urlencodedParser, function(request, response) {
   var body = request.body.body
   db.insertNews(title, body)
   response.status(200).json({"status": "news saved"});
+})
+
+app.post("/deleteNews", urlencodedParser, function(request, response) {
+  if (!request.body) return response.sendStatus(400)
+
+  var id = request.body.id
+  db.deleteNews(id)
+  response.status(200).json({"status": "news deleted"})
 })
 
 app.post("/scheduleSMSAlertAction", urlencodedParser, function(request, response) {
@@ -155,7 +164,7 @@ app.get("/admin", urlencodedParser, isAuthenticated, function(request, response)
     }
 })
 
-app.post('/logout', function(request, response){
+app.get('/logout', function(request, response){
   request.logout();
   response.redirect('/login');
 });
