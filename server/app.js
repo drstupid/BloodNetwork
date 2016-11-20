@@ -67,8 +67,9 @@ app.post("/registrationAction", urlencodedParser, function(request, response) {
   if (!request.body) return response.sendStatus(400)
 
   var phoneNumber = request.body.phoneNumber
+  var bloodType = request.body.bloodType
   console.log("post from registrationAction: " + phoneNumber)
-  registrationController.registerPhoneNumber(phoneNumber, function(err, message) {
+  registrationController.registerPhoneNumber(phoneNumber, bloodType, function(err, message) {
     if(!err) {
       response.status(200).json({"phoneNumber": phoneNumber})
     } else {

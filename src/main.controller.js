@@ -222,7 +222,7 @@ $('a[href^="#"]').on('click',function (e) {
                   $.ajax({
                                  type: "POST",
                                  url: "/registrationAction",
-                                 data: "phoneNumber=%2B4"+$('#phoneNumber').val(),
+                                 data: "phoneNumber=%2B4"+$('#phoneNumber').val()+"&bloodType="+$('#bloodType').val(),
                                  success: function (data)
                                  {
                                    $('#myModal').modal('hide');

@@ -24,10 +24,10 @@ module.exports = Pattern.extend({
         db = database
     },
 
-    registerPhoneNumber: function (phoneNumber, completion) {
+    registerPhoneNumber: function (phoneNumber, bloodType, completion) {
         var validationCode = getValidationCode()
 
-        if (db.insertUser({phoneNumber: phoneNumber, validationCode: validationCode, isVerified: false})) {
+        if (db.insertUser({phoneNumber: phoneNumber, validationCode: validationCode, isVerified: false, bloodType: bloodType})) {
           sendMessage(phoneNumber, validationCode, function (err, response) {
             if (err) {
               completion(err, "Va rugam sa verificati numarul de telefon introdus.")
