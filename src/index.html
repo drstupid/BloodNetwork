@@ -22,7 +22,7 @@
 
 <!-- NAVIGATION -->
 
-<div class="navbar navbar-static-top">
+<div class="navbar navbar-fixed-top  navbar-inverse">
    <div class="navbar-inner">
       <div class="container nav-height">
 
@@ -40,9 +40,10 @@
                </div>
                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
                   <ul class="nav navbar-nav navbar-right">
-                     <li class="active"><a href="#">Home</a></li>
-                     <li><a href="#about">About</a></li>
-                     <li><a href="#contact">Contact</a></li>
+                     <li><a href="#home">Home</a></li>
+                     <li><a href="#news">News</a></li>
+                     <li><a href="#where">Unde</a></li>
+                     <li><a href="#deCe">De Ce?</a></li>
                   </ul>
                </div>
 
@@ -52,9 +53,10 @@
 
 
 <!-- SLIDER -->
-
+<a name="home" id="home"></a>
 <div class="container-fluid">
-
+<div class="row" style="height:83px">
+</div>
    <div class="row">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
          <!-- Indicators -->
@@ -68,7 +70,7 @@
                <div class="carousel-caption">
                   <div class="jumbotron jumbo" style=" background-color:transparent !important;text-align:left">
                      <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-primary btn-lg"
+                     <button type="button" class="btn btn-danger  btn-lg"
                              data-toggle="modal" data-target="#myModal"> Doneaza </button></p>
                   </div>
                </div>
@@ -85,11 +87,104 @@
          </a>
       </div>
    </div>
+<a name="news" id="news"></a>
+   <div class="row text-center">
+        <h2>Ultimele noutati <strong>Blood Network</strong></h2>
+   </div>
 
+            <div class="row">
+              <div class="jumbotron less-padding" style="background-color:#FFFFFF">
+                <div class="container">
+               <div class="col-md-4">
+                 <div class="panel panel-info">
+                   <div class="panel-heading">Criză de sânge în Prahova</div>
+                   <div class="panel-body">
+                     20 de angajaţi ai ISU Prahova au donat în prima zi a campaniei la Centrul de Transfuzii Sanguine Ploieşti.
+                     "Pompierii militari prahoveni s-au alăturat campaniei naţionale de solidaritate social Salvatorii donează pentru viaţă. Este momentul ca încă o data să demonstrăm că suntem alături de semenii noştri cât şi de persoanele aflate la nevoie. Aproximativ 40 de pompieri donează sânge în cursul zilei de astăzi. Campania continua însă şi săptămâna viitoare", a declarat Raluca Vasiloae, purtător de cuvânt ISU Prahova
+                    </div>
+                    <div class="panel-footer">28 Oct 2016</div>
+                 </div>
+               </div>
+               <div class="col-md-4">
+                 <div class="panel panel-info">
+                   <div class="panel-heading">Bonurile de masă primite în schimbul sângelui donat, stimulent pentru donatorii din Timiş</div>
+                   <div class="panel-body">
+                     Între 60 şi 100 de persoane donează sânge, zilnic, la Centrul de Transfuzii Sanguine din Timişoara, astfel că sala de aşteptare nu este niciodată goală. Cu toate acestea, conducerea centrului spune că ideal ar fi să doneze 200 de persoane zilnic pentru a asigura tot necesarul de sânge.
+                     <br>Jumătate din donatori sunt "clienţi" fideli, iar directorul centrului spune că cele şapte bonuri de masă pe care le primesc în schimb reprezintă un stimulent important.
+                    </div>
+                    <div class="panel-footer">2 Nov 2016</div>
+                 </div>
+               </div>
+               <div class="col-md-4">
+                 <div class="panel panel-info">
+                   <div class="panel-heading">“Donează Sânge, Fii Erou”!</div>
+                   <div class="panel-body">
+                     Studenții medicinişti trag un semnal de alarma în contextul lipsei acute de sânge din spitalele din România. Societatea Studenţilor Medicinişti Iaşi (SSMI), în colaborare cu Centrul de Transfuzie Sanguină Iași, organizează o nouă ediţie a Campaniei de Donare de Sânge, sub deviza “Donează Sânge, Fii Erou!”, în perioada 21-25 noiembrie 2016.
+                     Proiectul național se va desfășura în 9 centre universitare din România: București, Cluj-Napoca, Iași, Brașov, Sibiu, Craiova, Timișoara, Oradea și Tîrgu-Mureș.
+                    </div>
+                    <div class="panel-footer">28 Oct 2016</div>
+                 </div>
+               </div>
+                </div>
+                </div>
+            </div>
+            <a name="where" id="where"></a>
+            <div class="row">
+               <div class="jumbotron text-left">
+                  <p>
+                     <strong>UNDE?</strong>
+                  </p>
+                  <table class="table" style=" width: 100%;">
+                     <tr>
+                        <td style="width:50%">
+                           <div id="map" style=" height: 400px; width: 100%;"></div>
+                        </td>
+                        <td>
+                           <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle btn-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
+                              <ul class="dropdown-menu" id="location-centers">
+                              </ul>
+                  </div>
+                  <div class="input-group-btn">
+                     <form>
+                     <input type="text" name="q" class="btn btn-default dropdown-toggle btn-font autocomplete" placeholder="Gaseste un Centru aproape de tine"></input>
+                     </form>
+                           </div>
+                           <div class="row">&nbsp;</div>
+                           <!-- spacer -->
+                           <div id="centerInfo" class="row-fluid">
+                              <p><strong>NUME CENTRU</strong></p>
+                              <p class="js-center-name">- Toate centrele de transfuzii sanguine din Romania</p>
+                              <p><strong>ADRESA</strong></p>
+                              <p class="js-center-address"> - </p>
+                              <p><strong>TELEFON</strong></p>
+                              <p class="js-center-phone"> - </p>
+                              <p><strong>ORAR</strong></p>
+                              <div class="container-fluid">
+                                 <div class="row">
+                                    <div class="col-xs-6">Luni-Vineri</div>
+                                    <div class="col-xs-6">08:00 - 20:00</div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-xs-6">Sambata</div>
+                                    <div class="col-xs-6">08:00 - 12:00</div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-xs-6">Duminica</div>
+                                    <div class="col-xs-6">Inchis</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+
+<a name="deCe" id="deCe"></a>
    <div class="row">
-      <div class="jumbotron text-left" style="background-color:#FFFFFF">
-         <div class="row">
-            <div class="col-md-4">
+     <div class="jumbotron text-left less-padding" style="background-color:#FFFFFF">
+      <div class="col-md-4">
                <p class="lead">România se află pe ultimele locuri în Europa la capitolul donării de sânge.</p>
                <h4> Este ironic că un popor atât de solidar nu trece de un procent atât de mic precum cel pe care îl înregistrăm, în medie, pe an: doar 1,7% din populaţia adultă donează sânge. În prezent, doar 1-2% dintre români donează sânge. Sistemul medical din România trăieşte într-o continuă nevoie de sânge.</h4>
             </div>
@@ -126,61 +221,8 @@
                   </div>
                </div>
             </div>
-         </div>
       </div>
-   </div>
-
-   <div class="row">
-      <div class="jumbotron text-left">
-         <p>
-            <strong>UNDE?</strong>
-         </p>
-         <table class="table" style=" width: 100%;">
-            <tr>
-               <td style="width:50%">
-                  <div id="map" style=" height: 400px; width: 100%;"></div>
-               </td>
-               <td>
-                  <div class="input-group-btn">
-                     <button type="button" class="btn btn-default dropdown-toggle btn-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
-                     <ul class="dropdown-menu" id="location-centers">
-                     </ul>
-                  </div>
-                  <div class="input-group-btn">
-                     <form>
-                     <input type="text" name="q" class="btn btn-default dropdown-toggle btn-font autocomplete" placeholder="Gaseste un Centru aproape de tine"></input>
-                     </form>
-                  </div>
-                  <div class="row">&nbsp;</div>
-                  <!-- spacer -->
-                  <div id="centerInfo" class="row-fluid">
-                     <p><strong>NUME CENTRU</strong></p>
-                     <p class="js-center-name">- Toate centrele de transfuzii sanguine din Romania</p>
-                     <p><strong>ADRESA</strong></p>
-                     <p class="js-center-address"> - </p>
-                     <p><strong>TELEFON</strong></p>
-                     <p class="js-center-phone"> - </p>
-                     <p><strong>ORAR</strong></p>
-                     <div class="container-fluid">
-                        <div class="row">
-                           <div class="col-xs-6">Luni-Vineri</div>
-                           <div class="col-xs-6">08:00 - 20:00</div>
-                        </div>
-                        <div class="row">
-                           <div class="col-xs-6">Sambata</div>
-                           <div class="col-xs-6">08:00 - 12:00</div>
-                        </div>
-                        <div class="row">
-                           <div class="col-xs-6">Duminica</div>
-                           <div class="col-xs-6">Inchis</div>
-                        </div>
-                     </div>
-                  </div>
-               </td>
-            </tr>
-         </table>
-      </div>
-   </div>
+</div>
 
 </div>
 
@@ -288,6 +330,22 @@
                <div class="alert alert-info" role="alert">Iti trimitem un SMS cand exista o nevoie urgenta de sange.
                   Aboneaza-te mai jos!
                </div>
+               <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuBG" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Alege grupa ta de sange
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuBG">
+    <li><a href="#">O+</a></li>
+    <li><a href="#">O-</a></li>
+    <li><a href="#">A+</a></li>
+    <li><a href="#">A+</a></li>
+      <li><a href="#">B+</a></li>
+        <li><a href="#">B-</a></li>
+        <li><a href="#">AB+</a></li>
+          <li><a href="#">AB-</a></li>
+  </ul>
+</div><br>
                <div class="form-group" id="phoneNumberArea">
                   <div class="input-group">
                      <span class="input-group-addon" id="basic-addon1">Telefon (+4)</span>

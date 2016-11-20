@@ -217,6 +217,20 @@ $(document).ready(function() {
         if ( (verified) || ($(this).val().length > 10) ) {e.preventDefault();}
     });
 
+/** SCROLL*/
+$('a[href^="#"]').on('click',function (e) {
+       e.preventDefault();
+
+       var target = this.hash;
+       $target = $(target);
+
+       $('html, body').stop().animate({
+           'scrollTop':  $target.offset().top
+       }, 900, 'swing', function () {
+           window.location.hash = target;
+       });
+   });
+
     /** MODAL 1 **********************************************************/
     /*********************************************************************/
     /** MODAL 1 SHOW */
