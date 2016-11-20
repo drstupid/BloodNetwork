@@ -157,6 +157,14 @@ $(document).ready(function() {
         $("#btnClear").click(function(event){
             event.preventDefault();
             $("input.autocomplete").val("");
+
+            var $infoContainer = $("div#centerInfo");
+            $infoContainer.find("p.js-center-name").first().html("- Toate centrele de transfuzii sanguine din Romania");
+            $infoContainer.find("p.js-center-address").first().html("-");
+            $infoContainer.find("p.js-center-phone").first().html("-");
+
+            APP.gmap.map.setCenter(APP.gmap.center);
+            APP.gmap.map.setZoom(APP.gmap.zoom);
         });
 
 
