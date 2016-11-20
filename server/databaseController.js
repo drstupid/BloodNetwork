@@ -107,6 +107,13 @@ module.exports = Pattern.extend({
       db.saveDatabase()
     },
 
+    deleteNews: function (id) {
+      this.newsCollection().removeWhere(function(news) {
+        return news.$loki == id
+      })
+      db.saveDatabase()
+    },
+
     allNews: function () {
         return this.newsCollection().find({}).sort(function(obj1, obj2) {
             if (obj1.date === obj2.date) return 0

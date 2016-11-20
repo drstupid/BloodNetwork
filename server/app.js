@@ -113,6 +113,14 @@ app.post("/insertNewsAction", urlencodedParser, function(request, response) {
   response.status(200).json({"status": "news saved"});
 })
 
+app.post("/deleteNews", urlencodedParser, function(request, response) {
+  if (!request.body) return response.sendStatus(400)
+
+  var id = request.body.id
+  db.deleteNews(id)
+  response.status(200).json({"status": "news deleted"})
+})
+
 app.post("/scheduleSMSAlertAction", urlencodedParser, function(request, response) {
   if (!request.body) return response.sendStatus(400)
 
