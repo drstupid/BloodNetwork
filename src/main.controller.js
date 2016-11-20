@@ -8,7 +8,9 @@ APP.gmap = {
     mapContainer: null,
     map: null,
     center: {lat: 46.048836, lng: 24.884033},
+    bounds: null,
     zoom: 6,
+    minZoom: 6,
     infoWindows: [],
     pins: [],
     loadedPins: false,
@@ -37,7 +39,7 @@ APP.gmap = {
 };
 
 function initGMap() {
-
+    APP.gmap.bounds = new google.maps.LatLngBounds();
     APP.gmap.initializeMap = function() {
         if (!APP.gmap.mapContainer){
             setTimeout(APP.gmap.initializeMap, 100);
@@ -45,6 +47,7 @@ function initGMap() {
         }
         APP.gmap.map = new google.maps.Map(APP.gmap.mapContainer, {
             zoom: APP.gmap.zoom,
+            minZoom: APP.gmap.minZoom,
             center: APP.gmap.center
         });
 
@@ -71,39 +74,68 @@ $(document).ready(function() {
     //populate city lists
     function initializeLocations(data) {
         APP.stash.entries = data;
+        APP.stash.centers = {};
+        APP.stash.cities = [];
 
+        // remap
         $.each(data, function(index, entry) {
-            var $li = $("<li><a href='javascript:void(0)' data-phones='" + JSON.stringify(entry.tel) + "' data-coords='" + JSON.stringify(entry.coords) + "'><span>" + entry.name + "</span><br/><small>" + entry.address + "</small></a></li>");
-            $("#location-centers").append($li);
-
             APP.gmap.addPin2Gmap(entry.coords);
 
-            $li.find("a").first().click(function(event){
+            var centerCity = entry.city;
+            APP.stash.cities.push(centerCity);
+
+            if (!APP.stash.centers[centerCity]) {
+                APP.stash.centers[centerCity] = [];
+            }
+
+            APP.stash.centers[centerCity].push(entry);
+        });
+
+        $.each(APP.stash.cities, function(index, city) {
+
+            var $li = $("<li><a href='javascript:void(0);' data-city='" + city + "'><span>" + city + "</span></a></li>");
+            $("#location-centers").append($li);
+
+            $li.find("a").first().click(function(event) {
                 event.preventDefault();
-                var centerLocation = $(this).data("coords");
-                var pos = {lat: parseFloat(centerLocation.lat), lng: parseFloat(centerLocation.lng)};
 
-                if ( (pos.lat) && (pos.lng) ) {
-                    APP.gmap.showPinOnGmap(pos);
-
-                    var centerName =  $(this).find("span").html();
-                    var centerAddress =  $(this).find("small").html();
-                    var centerPhones = $(this).data("phones");
-
-                    if (!centerPhones) {
-                        centerPhones = [];
-                    } else if (typeof centerPhones !== "Array") {
-                        centerPhones = [centerPhones];
-                    }
-
-                    var $infoContainer = $("div#centerInfo");
-                    $infoContainer.find("p.js-center-name").first().html(centerName);
-                    $infoContainer.find("p.js-center-address").first().html(centerAddress);
-                    $infoContainer.find("p.js-center-phone").first().html(centerPhones.join(", "));
-
-                } else {
-                    console.log("Center does not have a locaiton set!");
+                var centers = null;
+                var cityName = $(this).data("city");
+                if (cityName) {
+                    centers = APP.stash.centers[cityName];
                 }
+
+                if (centers) {
+                    var count = 0;
+                    APP.gmap.bounds = new google.maps.LatLngBounds();
+                    $.each(centers, function(i,entry){
+                        var loc = entry.coords;
+                        if ( (loc) && (APP.gmap.bounds) ) {
+                            APP.gmap.bounds.extend(loc);
+                        }
+                        count++;
+                    });
+
+                    // fit the google maps
+                    APP.gmap.map.fitBounds(APP.gmap.bounds);
+                    if (count == 1) {
+                        APP.gmap.map.setZoom(16);
+
+                        var centerPhones = centers[0].tel;
+
+                        if (!centerPhones) {
+                            centerPhones = [];
+                        } else if (typeof centerPhones !== "Array") {
+                            centerPhones = [centerPhones];
+                        }
+
+                        var $infoContainer = $("div#centerInfo");
+                        $infoContainer.find("p.js-center-name").first().html(centers[0].name);
+                        $infoContainer.find("p.js-center-address").first().html(centers[0].address);
+                        $infoContainer.find("p.js-center-phone").first().html(centerPhones.join(", "));
+                    }
+                }
+
             });
         });
 
@@ -112,7 +144,71 @@ $(document).ready(function() {
         } else {
             APP.gmap.loadedPins = true;
         }
-    }
+
+        // Autocomplete
+        $("input.autocomplete").autoComplete({
+            minChars: 0,
+            source: function(term, suggest){
+                term = term.toLowerCase();
+                var choices = APP.stash.entries;
+                var suggestions = [];
+                for (i=0;i<choices.length;i++) {
+                    if (~(choices[i].city + ' ' + choices[i].name + ' ' + choices[i].address).toLowerCase().indexOf(term)) {
+                        suggestions.push(choices[i]);
+                    }
+                }
+                suggest(suggestions);
+            },
+            renderItem: function (item, search){
+                search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+                return '<div class="autocomplete-suggestion" data-city="'+item.city+'" data-name="'+item.name+'" data-address="'+item.address+'" data-tel="'+JSON.stringify(item.tel)+'">'+item.city.replace(re, "<b>$1</b>")+'</div>';
+            },
+            onSelect: function(e, term, item){
+                var cityName = item.data('city');
+                // Set field value
+                $("input.autocomplete").val(item.data('city')+'');
+
+                var centers = null;
+                if (cityName) {
+                    centers = APP.stash.centers[cityName];
+                }
+
+                if (centers) {
+                    var count = 0;
+                    APP.gmap.bounds = new google.maps.LatLngBounds();
+                    $.each(centers, function(i,entry){
+                        var loc = entry.coords;
+                        if ( (loc) && (APP.gmap.bounds) ) {
+                            APP.gmap.bounds.extend(loc);
+                        }
+                        count++;
+                    });
+
+                    // fit the google maps
+                    APP.gmap.map.fitBounds(APP.gmap.bounds);
+                    if (count == 1) {
+                        APP.gmap.map.setZoom(16);
+
+                        var centerPhones = centers[0].tel;
+
+                        if (!centerPhones) {
+                            centerPhones = [];
+                        } else if (typeof centerPhones !== "Array") {
+                            centerPhones = [centerPhones];
+                        }
+
+                        var $infoContainer = $("div#centerInfo");
+                        $infoContainer.find("p.js-center-name").first().html(centers[0].name);
+                        $infoContainer.find("p.js-center-address").first().html(centers[0].address);
+                        $infoContainer.find("p.js-center-phone").first().html(centerPhones.join(", "));
+                    }
+                }
+
+            }
+        });
+    };
+
 
     /** PHONE NUMBER VALIDATOR */
     $(document.body).on("keypress", "input#phoneNumber", function(e) {
