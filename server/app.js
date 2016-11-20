@@ -155,7 +155,7 @@ app.get("/admin", urlencodedParser, isAuthenticated, function(request, response)
     }
 })
 
-app.post('/logout', function(request, response){
+app.get('/logout', function(request, response){
   request.logout();
   response.redirect('/login');
 });
