@@ -268,3 +268,13 @@ li small {
 .navbar-inverse .navbar-brand:hover {
   color: #5bc0de !important;
 }
+
+.row-expanse {
+  margin-top: 40px;
+  margin-bottom: 90px;
+}
+
+.markers {
+  top: -76px;
+  position:relative;
+}
