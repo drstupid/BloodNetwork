@@ -308,6 +308,11 @@ li small {
   color: #DDD;
 }
 
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #5bc0de;
+}
+
 .slider-button-container {
   left:0 !important;
 }
