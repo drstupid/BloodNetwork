@@ -235,3 +235,36 @@ li small {
   padding-bottom: 20px;
   padding-bottom: 20px;
 }
+
+.navbar-custom {
+  background-color: #60646d !important;
+  border-color: #FFF;
+  color: #AAA;
+  font-weight:200;
+}
+
+.navbar-inner-custom {
+  background-color: #FFF;
+  color: #000;
+}
+
+.navbar-inner-padding {
+  padding: 10px 0;
+}
+
+.color-light-gray {
+  color: #DDD;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #FFF !important;
+  font-weight:700;
+  background-color: #5bc0de !important;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #000 !important;
+}
+.navbar-inverse .navbar-brand:hover {
+  color: #5bc0de !important;
+}

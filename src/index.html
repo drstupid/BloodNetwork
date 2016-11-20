@@ -22,8 +22,20 @@
 
 <!-- NAVIGATION -->
 
-<div class="navbar navbar-fixed-top  navbar-inverse">
-   <div class="navbar-inner">
+<div class="navbar navbar-fixed-top  navbar-inverse navbar-custom">
+   <div class="navbar-inner navbar-inner-padding">
+      <div class="container nav-height">
+         <div class="navbar-header">
+            Bun venit la Blood Network
+         </div>
+
+         <div class="nav navbar-nav navbar-right">
+            Contact: <span class="color-light-gray">+0256 211 211</span>
+         </div>
+      </div>
+   </div>
+
+   <div class="navbar-inner navbar-inner-custom">
       <div class="container nav-height">
 
                <!-- Brand and toggle get grouped for better mobile display -->
@@ -140,16 +152,16 @@
                            <div id="map" style=" height: 400px; width: 100%;"></div>
                         </td>
                         <td>
-                           <div class="input-group-btn">
-                              <button type="button" class="btn btn-default dropdown-toggle btn-font" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gaseste un Centru aproape de tine <span class="caret"></span></button>
-                              <ul class="dropdown-menu" id="location-centers">
-                              </ul>
-                  </div>
-                  <div class="input-group-btn">
-                     <form>
-                     <input type="text" name="q" class="btn btn-default dropdown-toggle btn-font autocomplete" placeholder="Gaseste un Centru aproape de tine"></input>
-                     </form>
+
+                           <div class="input-group">
+                              <input name="q" type="text" class="form-control autocomplete" placeholder="Gaseste un Centru aproape de tine">
+                              <span class="input-group-btn">
+                                <button id="btnClear" class="btn btn-default" type="button">
+                                  <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                              </span>
                            </div>
+
                            <div class="row">&nbsp;</div>
                            <!-- spacer -->
                            <div id="centerInfo" class="row-fluid">

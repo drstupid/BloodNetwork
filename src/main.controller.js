@@ -91,60 +91,6 @@ $(document).ready(function() {
             APP.stash.centers[centerCity].push(entry);
         });
 
-        $.each(APP.stash.cities, function(index, city) {
-
-            var $li = $("<li><a href='javascript:void(0);' data-city='" + city + "'><span>" + city + "</span></a></li>");
-            $("#location-centers").append($li);
-
-            $li.find("a").first().click(function(event) {
-                event.preventDefault();
-
-                var centers = null;
-                var cityName = $(this).data("city");
-                if (cityName) {
-                    centers = APP.stash.centers[cityName];
-                }
-
-                if (centers) {
-                    var count = 0;
-                    APP.gmap.bounds = new google.maps.LatLngBounds();
-                    $.each(centers, function(i,entry){
-                        var loc = entry.coords;
-                        if ( (loc) && (APP.gmap.bounds) ) {
-                            APP.gmap.bounds.extend(loc);
-                        }
-                        count++;
-                    });
-
-                    // fit the google maps
-                    APP.gmap.map.fitBounds(APP.gmap.bounds);
-                    if (count == 1) {
-                        APP.gmap.map.setZoom(16);
-
-                        var centerPhones = centers[0].tel;
-
-                        if (!centerPhones) {
-                            centerPhones = [];
-                        } else if (typeof centerPhones !== "Array") {
-                            centerPhones = [centerPhones];
-                        }
-
-                        var $infoContainer = $("div#centerInfo");
-                        $infoContainer.find("p.js-center-name").first().html(centers[0].name);
-                        $infoContainer.find("p.js-center-address").first().html(centers[0].address);
-                        $infoContainer.find("p.js-center-phone").first().html(centerPhones.join(", "));
-                    }
-                }
-
-            });
-        });
-
-        if (APP.gmap.map) {
-            APP.gmap.showPinsOnGmap();
-        } else {
-            APP.gmap.loadedPins = true;
-        }
-
         // Autocomplete
         $("input.autocomplete").autoComplete({
             minChars: 0,
@@ -160,7 +106,7 @@ $(document).ready(function() {
                 suggest(suggestions);
             },
             renderItem: function (item, search){
-                search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                search = search.toLowerCase().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
                 var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
                 return '<div class="autocomplete-suggestion" data-city="'+item.city+'" data-name="'+item.name+'" data-address="'+item.address+'" data-tel="'+JSON.stringify(item.tel)+'">'+item.city.replace(re, "<b>$1</b>")+'</div>';
             },
@@ -207,6 +153,19 @@ $(document).ready(function() {
 
             }
         });
+
+        $("#btnClear").click(function(event){
+            event.preventDefault();
+            $("input.autocomplete").val("");
+        });
+
+
+        if (APP.gmap.map) {
+            APP.gmap.showPinsOnGmap();
+        } else {
+            APP.gmap.loadedPins = true;
+        }
+
     };
 
 
