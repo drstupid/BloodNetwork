@@ -100,7 +100,7 @@ app.get("/centers", function(request, response) {
 })
 
 app.get("/news", function(request, response) {
-  response.json(db.allNews())
+  response.json(db.recentNews())
 })
 
 app.post("/insertNewsAction", urlencodedParser, function(request, response) {

@@ -60,7 +60,9 @@ module.exports = Pattern.extend({
 
     // Centers
     allCenters: function () {
-        return this.centersCollection().find({})
+        return this.centersCollection().find({}).map(function(center) {
+            return {name: center.name, address: center.address, tel: center.tel, coords: center.coords, city: center.city}
+        })
     },
 
     findCenter: function (city) {
@@ -106,11 +108,19 @@ module.exports = Pattern.extend({
     },
 
     allNews: function () {
-      return this.newsCollection().find({}).sort(function(obj1, obj2) {
-        if (obj1.date === obj2.date) return 0
-        if (obj1.date > obj2.date) return -1
-        if (obj1.date < obj2.date) return 1
-      })
+        return this.newsCollection().find({}).sort(function(obj1, obj2) {
+            if (obj1.date === obj2.date) return 0
+            if (obj1.date > obj2.date) return -1
+            if (obj1.date < obj2.date) return 1
+        }).map(function(news) {
+            return {title: news.title, date: news.title, body: news.body}
+        })
+    },
+
+    recentNews: function() {
+        return this.allNews().filter(function(news, idx) {
+            return (idx < 3)
+        })
     }
 
 });
