@@ -113,7 +113,7 @@ module.exports = Pattern.extend({
             if (obj1.date > obj2.date) return -1
             if (obj1.date < obj2.date) return 1
         }).map(function(news) {
-            return {title: news.title, date: news.title, body: news.body}
+            return {title: news.title, date: news.title, body: news.body, id: news.$loki}
         })
     },
 
