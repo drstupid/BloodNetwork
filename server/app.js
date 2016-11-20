@@ -100,7 +100,7 @@ app.get("/centers", function(request, response) {
 })
 
 app.get("/news", function(request, response) {
-  response.json(db.allNews())
+  response.json(db.recentNews())
 })
 
 app.post("/insertNewsAction", urlencodedParser, function(request, response) {
@@ -155,7 +155,7 @@ app.get("/admin", urlencodedParser, isAuthenticated, function(request, response)
     }
 })
 
-app.post('/logout', function(request, response){
+app.get('/logout', function(request, response){
   request.logout();
   response.redirect('/login');
 });

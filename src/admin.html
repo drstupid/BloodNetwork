@@ -44,11 +44,11 @@
       <!--Scheduled SMS-->
       <div id="collapse1" class="panel-collapse collapse in">
         <div class="panel-body">
-          <form class="form-horizontal" action="/scheduleSMSAlertAction" enctype="application/x-www-form-urlencoded">
+          <form class="form-horizontal" method="post" action="/scheduleSMSAlertAction" enctype="application/x-www-form-urlencoded">
             <div class="form-group">
               <label for="body"  class="col-sm-2 control-label">Continut SMS:</label>
               <div class="col-sm-10">
-              <input type="text" class="form-control" id="body" placeholder="Mesaj">
+              <input type="text" class="form-control" name="body" id="body" placeholder="Mesaj">
               </div>
             </div>
             <div class="form-group">
@@ -70,11 +70,11 @@
       <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body">
 <!--Instant SMS-->
-<form class="form-horizontal" action="/scheduleSMSAlertAction" enctype="application/x-www-form-urlencoded">
+<form class="form-horizontal" method="post" action="/instantSMSAlertAction" enctype="application/x-www-form-urlencoded">
   <div class="form-group">
     <label for="title"  class="col-sm-2 control-label">Grupa de sange:</label>
     <div class="col-sm-10">
-      <select name="bloodType"  class="form-control">
+      <select name="bloodType" class="form-control">
         <option value="All">Toate</option>
         <option value="O+">O+</option>
         <option value="O-">O-</option>
@@ -90,7 +90,7 @@
   <div class="form-group">
     <label for="body"  class="col-sm-2 control-label">Continut SMS:</label>
     <div class="col-sm-10">
-    <input type="text" class="form-control" id="body" placeholder="Mesaj">
+    <input type="text" class="form-control" name="body" id="body" placeholder="Mesaj">
     </div>
   </div>
   <div class="form-group">
@@ -114,7 +114,7 @@
  <div class="col-md-6">
 
 <!--News-->
-<form class="form-horizontal" action="/insertNewsAction" enctype="application/x-www-form-urlencoded">
+<form class="form-horizontal" method="post" action="/insertNewsAction" enctype="application/x-www-form-urlencoded">
   <div class="form-group">
     <label for="title"  class="col-sm-2 control-label">Titlu:</label>
     <div class="col-sm-10">
@@ -124,8 +124,7 @@
   <div class="form-group">
     <label for="body"  class="col-sm-2 control-label">Continut:</label>
     <div class="col-sm-10">
-    <textarea class="form-control" rows="3" id="body" placeholder="Mesaj">
-    </textarea>
+    <textarea class="form-control" rows="3" id="body" name="body" placeholder="Mesaj"></textarea>
     </div>
   </div>
   <div class="form-group">
